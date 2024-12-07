@@ -24,7 +24,7 @@ const getTimeDifference = (updatedAt) => {
   } else if (diffInMinutes > 0) {
     return diffInMinutes === 1 ? "1min ago" : `${diffInMinutes}mins ago`;
   } else {
-    return diffInSeconds === 1 ? "1sec ago" : `${diffInSeconds}secs ago`;
+    return diffInSeconds === 1 ? "1sec ago" : `${diffInSeconds}secs ago`;;
   }
 };
 
