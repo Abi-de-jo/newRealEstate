@@ -1,0 +1,22 @@
+{
+    "selectAmenities": "Выберите удобства",
+    "amenitiesRequired": "Необходимо выбрать хотя бы одно удобство",
+    "back": "Назад",
+    "nextStep": "Следующий шаг",
+    "AirConditioner": "Кондиционер",
+    "Oven": "Духовка",
+    "Microwave": "Микроволновая печь",
+    "VacuumCleaner": "Пылесос",
+    "Balcony": "Балкон",
+    "Stove": "Плита",
+    "Dishwasher": "Посудомоечная машина",
+    "SmartTV": "Умный телевизор",
+    "WiFi": "WiFi",
+    "ParkingPlace": "Парковочное место",
+    "PlayStation": "PlayStation",
+    "Projector": "Проектор",
+    "Elevator": "Лифт",
+    "Heating": "Отопление",
+    "PET": "Домашние животные"
+  }
+  

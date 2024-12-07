@@ -1,0 +1,12 @@
+{
+    "country": "ქვეყანა",
+    "district": "რაიონი",
+    "address": "მისამართი",
+    "nearbyMetro": "შეიყვანეთ ახლომდებარე მეტრო",
+    "previous": "წინა",
+    "nextStep": "შემდეგი ნაბიჯი",
+    "placeholder": {
+      "address": "მისამართი"
+    }
+  }
+  

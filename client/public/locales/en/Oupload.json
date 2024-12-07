@@ -1,0 +1,12 @@
+{
+    "welcomeBack": "Welcome back",
+    "username": "Username",
+    "telephoneNumber": "Telephone number",
+    "governmentId": "Government ID",
+    "register": "Register",
+    "loading": "Loading...",
+    "error": {
+      "default": "An error occurred"
+    }
+  }
+  

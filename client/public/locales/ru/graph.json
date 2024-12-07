@@ -1,0 +1,19 @@
+{
+       "overviewTitle": "Обзор данных",
+      "agents": "Агенты",
+      "owners": "Владельцы",
+      "residency": "Резиденции",
+      "loading": "Загрузка данных...",
+      "totalAgents": "Всего агентов",
+      "publishedResidencies": "Опубликованные резиденции",
+      "agentDraftResidencies": "Черновики агентов",
+      "totalOwners": "Всего владельцев",
+      "ownersCreated": "Создано владельцами",
+      "accepted": "Принято",
+      "published": "Опубликовано",
+      "draft": "Черновик",
+      "agentsAchieve": "Достижения агентов",
+      "agentsDraft": "Черновики агентов",
+      "clickHint": "Нажмите на категорию, чтобы изучить подробные данные."
+   }
+  

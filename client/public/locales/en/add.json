@@ -1,0 +1,40 @@
+{
+    "ownerCanUpload": {
+      "label": "Owner Can Upload",
+      "description": "Be a Owner"
+    },
+    "uploadImage": {
+      "label": "Upload Image",
+      "description": "Upload property images"
+    },
+    "uploadVideo": {
+      "label": "Upload Video",
+      "description": "Upload property Video"
+    },
+    "uploadLocation": {
+      "label": "Upload Location",
+      "description": "Detailed Location"
+    },
+    "basicDetails": {
+      "label": "Basic Details",
+      "description": "Add basic details"
+    },
+    "houseType": {
+      "label": "House Type",
+      "description": "Choose type"
+    },
+    "amenities": {
+      "label": "Amenities",
+      "description": "Select amenities"
+    },
+    "ownerDetails": {
+      "label": "Owner Details",
+      "description": "Owner Information"
+    },
+    "facilities": {
+      "label": "Facilities",
+      "description": "Add facilities"
+    },
+    "completed": "Completed, click back button to go to previous step"
+  }
+  

@@ -1,0 +1,13 @@
+{
+    "title": "სათაური",
+    "description": "აღწერა",
+    "price": "ფასი",
+    "area": "არეალი",
+    "propertyNamePlaceholder": "ქონების სახელი",
+    "descriptionPlaceholder": "აღწერა",
+    "pricePlaceholder": "1000",
+    "areaPlaceholder": "მაგ: 1000 (კვ.ფუტი)",
+    "previous": "უკან",
+    "nextStep": "შემდეგი ნაბიჯი"
+  }
+  

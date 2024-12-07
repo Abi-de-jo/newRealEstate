@@ -1,0 +1,13 @@
+{
+    "title": "Название",
+    "description": "Описание",
+    "price": "Цена",
+    "area": "Площадь",
+    "propertyNamePlaceholder": "Название недвижимости",
+    "descriptionPlaceholder": "Описание",
+    "pricePlaceholder": "1000",
+    "areaPlaceholder": "например: 1000 (кв.фут)",
+    "previous": "Назад",
+    "nextStep": "Следующий шаг"
+  }
+  

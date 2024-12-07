@@ -1,0 +1,246 @@
+.hero-wrapper {
+  color: white;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+  background-color: #1A3E59;
+}
+/* Hero.css */
+
+.hero-wrapper {
+  background-color: #1A3E59;
+  position: relative;
+  overflow: hidden; /* Ensures glass effects are contained */
+}
+
+.flag img{
+
+  margin-top: 60px;
+  margin-left: 70px;
+}
+
+.hero-title .bc{
+
+  font-size: 5rem !important;
+  color: transparent ;
+  background-image: url("../../../public/flag.webp") !important;
+  background-clip: text ;
+  margin-bottom: 20px ;
+  background-size: contain;
+}
+ 
+/* Glassy background effects */
+.glassy-left, .glassy-right {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.179); /* Semi-transparent glass */
+   border-radius: 50%;
+   
+  z-index: -1; /* Position behind content */
+}
+
+/* Glassy Left - Top Left Corner */
+.glassy-left {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: -50px;
+  transform: rotate(15deg);
+}
+
+/* Glassy Right - Bottom Right Corner */
+.glassy-right {
+  width: 180px;
+  height: 180px;
+  bottom: 5%;
+  right: -60px;
+  transform: rotate(-10deg);
+}
+
+
+.hero-container {
+  justify-content: space-between; /* Changed to space-between for better alignment */
+  align-items: center; /* Center align items vertically */
+}
+
+/* left side */
+.hero-left {
+  gap: 3rem;
+  color: black;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title > h1 {
+  font-weight: 600;
+  font-size: 3.8rem;
+  line-height: 4rem;
+}
+
+.orange-circle {
+  height: 4rem;
+  width: 4rem;
+  background: var(--orange-gradient);
+  border-radius: 999px;
+  position: absolute;
+  right: 28%;
+  top: -10%;
+  z-index: -1;
+}
+
+.search-bar {
+  background-color: white;
+  border-radius: 5px;
+  border: 3px solid rgba(120, 120, 120, 0.374);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.search-bar > input {
+  border: none;
+  outline: none;
+}
+
+.stats {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.stat > :nth-child(1) {
+  font-size: 2rem;
+}
+
+.stat > :nth-child(1) > :last-child {
+  color: orange;
+}
+
+/* right side */
+.image-container {
+  width: 30rem; /* Adjusted width */
+  height: 35rem; /* Adjusted height */
+  overflow: hidden;
+  object-fit: cover;
+   display: flex; /* Center the image */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+ background: none !important;
+ border-radius: 50% 50% 1% 1% !important;
+ box-shadow: 0px 0px 100px black !important;
+}
+
+
+.image-container img{
+
+  width: 800px !important;
+  height: 600px !important;
+  margin-top: -10px;
+}
+
+
+
+ 
+
+/* mobile screens */
+@media (max-width: 640px) {
+  .hero-title > h1 {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      text-align:start;
+     
+  }
+
+  .bc{
+    display: flex;
+    justify-content: center;
+  }
+  .image-container {
+      width: 95%;
+      height: 25rem;
+     
+      border-radius: 50%; /* Keep it circular on smaller screens */
+  }
+
+  .flag img{
+    margin-top: 40px;
+    margin-left: 40px;
+  }
+  .stats {
+      justify-content: center;
+      gap: 1.5rem;
+  }
+  .stat > :nth-child(1) {
+      font-size: 1.5rem;
+  }
+  .stat > :nth-child(2) {
+      font-size: 0.8rem;
+  }
+}
+
+/* Hero Wrapper */
+.hero-wrapper {
+  background-color: #1A3E59;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glassy background effects */
+.glassy-left, .glassy-right, .glassy-extra {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  animation: float 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Glassy Left - Top Left Corner */
+.glassy-left {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: -50px;
+  transform: rotate(15deg);
+  animation-delay: 1s; /* Slight delay for unique timing */
+}
+
+/* Glassy Right - Bottom Right Corner */
+.glassy-right {
+  width: 180px;
+  height: 180px;
+  bottom: 5%;
+  right: -60px;
+  transform: rotate(-10deg);
+  animation-delay: 3s;
+}
+
+/* Extra Glassy Elements */
+.glassy-extra {
+  width: 170px;
+  height: 120px;
+  top: 60%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.glassy-extra:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  top: 15%;
+  right: 25%;
+  animation-delay: 4s;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(5deg);
+  }
+}
+
+

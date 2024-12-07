@@ -1,0 +1,14 @@
+{
+  "buy": "Buy",
+  "rent": "Rent",
+  "properties": "Properties",
+  "drafts": "Drafts",
+  "addProperty": "Add Property",
+  "agent": "Agent",
+  "user": "User",
+  "admin": "Admin",
+  "geoMap": "GeoMap",
+  "mustSignIn": "You must be signed in to add a property.",
+  "profile": "Profile",
+  "logout": "Logout"
+}

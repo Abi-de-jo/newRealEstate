@@ -1,0 +1,21 @@
+{
+    "transactionType": "Тип сделки",
+    "residencyType": "Тип проживания",
+    "propertyType": "Тип недвижимости",
+    "new": "Новый",
+    "old": "Старый",
+    "mixed": "Смешанный",
+    "rent": "Аренда",
+    "sale": "Продажа",
+    "dailyRent": "Суточная аренда",
+    "lease": "Лизинг",
+    "office": "Офис",
+    "commercial": "Коммерческая",
+    "cottage": "Коттедж",
+    "apartment": "Квартира",
+    "land": "Земля",
+    "house": "Дом",
+    "previous": "Назад",
+    "nextStep": "Следующий шаг"
+  }
+  

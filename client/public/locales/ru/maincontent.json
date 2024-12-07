@@ -1,0 +1,32 @@
+{
+   
+      "dashboard": "Панель управления",
+      "agents": "Агенты",
+      "owners": "Владельцы",
+      "residency": "Резиденция",
+      "settings": "Настройки",
+      "newAgent": "Новый агент",
+      "newOwner": "Новый владелец",
+      "newResidency": "Новая резиденция",
+      "all": "Все",
+      "allAgents": "Все агенты",
+      "allOwners": "Все владельцы",
+      "allResidencies": "Все резиденции",
+      "createAgent": "Создать нового агента",
+      "name": "Имя",
+      "email": "Эл. почта",
+      "password": "Пароль",
+      "phoneNumber": "Номер телефона",
+      "loading": "Загрузка...",
+      "error": "Ошибка при загрузке данных. Попробуйте позже.",
+      "needAssistance": "Нужна помощь?",
+      "contactSupport": "Свяжитесь с нашей службой поддержки.",
+      "getSupport": "Получить помощь",
+      "create": "Создать",
+      "cancel": "Отмена",
+      "searchPlaceholder": "Поиск...",
+      "notifications": "Уведомления",
+      "admin": "Админ"
+     
+  }
+  

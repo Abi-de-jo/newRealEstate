@@ -1,0 +1,287 @@
+import express from 'express';
+import { PrismaClient } from '@prisma/client';
+import bodyParser from 'body-parser';
+
+const prisma = new PrismaClient();
+const app = express();
+
+app.use(bodyParser.json()); // Use body-parser for handling JSON requests
+
+// Owner creates and submits a post
+app.post('/owner/create', async (req, res) => {
+  const {
+    images, video, address, metro, district, price, commission,
+    rooms, area, type, parking, balcony, amenities, description, ownerEmail
+  } = req.body;
+
+  try {
+    const newPost = await prisma.residency.create({
+      data: {
+        images,
+        video,
+        address,
+        metro,
+        district,
+        price,
+        commission,
+        rooms,
+        area,
+        type,
+        parking,
+        balcony,
+        amenities,
+        description,
+        ownerEmail,   // Automatically linked to the owner
+        status: 'DRAFT' // Initially, the post is a draft
+      }
+    });
+    res.status(201).json(newPost);
+  } catch (error) {
+    console.error('Error creating post:', error);
+    res.status(500).json({ error: 'Failed to create post' });
+  }
+});
+
+// Agent view: fetch all posts in 'DRAFT' status
+app.get('/agent/drafts', async (req, res) => {
+  try {
+    const drafts = await prisma.residency.findMany({
+      where: { status: 'DRAFT' },
+    });
+    res.status(200).json(drafts);
+  } catch (error) {
+    console.error('Error fetching drafts:', error);
+    res.status(500).json({ error: 'Failed to fetch drafts' });
+  }
+});
+
+// Agent accepts a post, changing the status to 'AGENT_DRAFT'
+app.post('/agent/accept', async (req, res) => {
+  const { residencyId, agentEmail } = req.body;
+
+  try {
+    const acceptedPost = await prisma.residency.update({
+      where: { id: residencyId },
+      data: {
+        agentEmail,
+        status: 'AGENT_DRAFT' // Post is now assigned to an agent
+      },
+    });
+    res.status(200).json(acceptedPost);
+  } catch (error) {
+    console.error('Error accepting post:', error);
+    res.status(500).json({ error: 'Failed to accept post' });
+  }
+});
+
+// Agent submits a post, changing the status to 'PUBLISHED'
+app.post('/agent/submit', async (req, res) => {
+  const { residencyId } = req.body;
+
+  try {
+    const publishedPost = await prisma.residency.update({
+      where: { id: residencyId },
+      data: { status: 'PUBLISHED' }, // Post is now published
+    });
+    res.status(200).json(publishedPost);
+  } catch (error) {
+    console.error('Error submitting post:', error);
+    res.status(500).json({ error: 'Failed to submit post' });
+  }
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
+});
+
+
+
+
+model Residency {
+  id          String    @id @default(uuid()) @db.Uuid
+  images      String[]
+  video       String?
+  address     String
+  metro       String
+  district    String
+  price       Float
+  commission  Float
+  rooms       Int
+  area        Float
+  type        String
+  parking     Boolean
+  balcony     Boolean
+  amenities   String[]
+  description String
+
+  ownerEmail  String?
+  owner       Owner?    @relation(fields: [ownerEmail], references: [email])
+
+  agentEmail  String?
+  agent       Agent?    @relation(fields: [agentEmail], references: [email])
+
+  status      String    @default("DRAFT") // 'DRAFT', 'AGENT_DRAFT', 'PUBLISHED'
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("residencies")
+}
+
+model Owner {
+  id       String      @id @default(uuid()) @db.Uuid
+  email    String      @unique
+  username String
+  password String
+  residencies Residency[]
+
+  @@map("owners")
+}
+
+model Agent {
+  id       String      @id @default(uuid()) @db.Uuid
+  email    String      @unique
+  username String
+  password String
+  residencies Residency[]
+
+  @@map("agents")
+}
+
+
+
+
+
+import { useState } from 'react';
+import axios from 'axios';
+
+const CreatePost = () => {
+  const [formData, setFormData] = useState({
+    images: [],
+    video: '',
+    address: '',
+    metro: '',
+    district: '',
+    price: '',
+    commission: '',
+    rooms: '',
+    area: '',
+    type: '',
+    parking: false,
+    balcony: false,
+    amenities: [],
+    description: '',
+    ownerEmail: 'owner@example.com',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/owner/create', formData);
+      console.log('Post created:', response.data);
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="address" value={formData.address} onChange={handleInputChange} placeholder="Address" />
+      <input name="price" value={formData.price} onChange={handleInputChange} placeholder="Price" />
+      {/* Add other form fields */}
+      <button type="submit">Create Post</button>
+    </form>
+  );
+};
+
+export default CreatePost;
+
+
+
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const AgentDrafts = () => {
+  const [drafts, setDrafts] = useState([]);
+
+  useEffect(() => {
+    const fetchDrafts = async () => {
+      try {
+        const response = await axios.get('/agent/drafts');
+        setDrafts(response.data);
+      } catch (error) {
+        console.error('Error fetching drafts:', error);
+      }
+    };
+    fetchDrafts();
+  }, []);
+
+  const handleAccept = async (id) => {
+    try {
+      const response = await axios.post('/agent/accept', { residencyId: id, agentEmail: 'agent@example.com' });
+      console.log('Post accepted:', response.data);
+    } catch (error) {
+      console.error('Error accepting post:', error);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Drafts</h2>
+      {drafts.map(draft => (
+        <div key={draft.id}>
+          <p>{draft.address}</p>
+          <button onClick={() => handleAccept(draft.id)}>Accept Post</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default AgentDrafts;
+
+
+
+
+const handleSubmitPost = async (id) => {
+  try {
+    const response = await axios.post('/agent/submit', { residencyId: id });
+    console.log('Post submitted:', response.data);
+  } catch (error) {
+    console.error('Error submitting post:', error);
+  }
+};
+
+
+
+<Auth0Provider
+    domain="dev-gnfk5ecv4ujqa6nn.eu.auth0.com"
+    clientId="dlyAjNpwii4Dni4frS7BxqHDxYvifNqk"
+    authorizationParams={{
+      redirect_uri:"http://localhost:3001"
+    }}
+
+    
+  >
+    <MantineProvider>
+
+         <App />
+
+    </MantineProvider>
+     </Auth0Provider>
+
+
+     title: "",
+    price: "",
+    description: "",
+    address: "",
+    district: "",
+    type: "",
+    metro: "",
+    images: [],

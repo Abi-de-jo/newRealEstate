@@ -1,0 +1,11 @@
+{
+    "ownerName": "Owner Name",
+    "ownerNumber": "Owner Number",
+    "ownerEmail": "Owner Email",
+    "ownerNameRequired": "Owner name is required",
+    "ownerNumberRequired": "Owner number is required",
+    "invalidEmail": "Invalid email",
+    "back": "Back",
+    "nextStep": "Next Step"
+  }
+  

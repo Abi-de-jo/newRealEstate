@@ -1,0 +1,12 @@
+{
+    "welcomeBack": "მოგესალმებით",
+    "username": "მომხმარებლის სახელი",
+    "telephoneNumber": "ტელეფონის ნომერი",
+    "governmentId": "სახელმწიფო ID",
+    "register": "რეგისტრაცია",
+    "loading": "ტვირთვა...",
+    "error": {
+      "default": "შეცდომა მოხდა"
+    }
+  }
+  

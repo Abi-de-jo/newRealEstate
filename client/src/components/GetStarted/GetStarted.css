@@ -1,0 +1,55 @@
+.g-wrapper {
+    position: relative;
+    overflow: hidden; /* Prevents overflow of pseudo-element */
+    height: 40vh; /* Adjust the height as needed */
+  }
+  
+  .g-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../../../public/get.png");
+     background-size: cover;
+    background-position: center;
+    filter: blur(4px); /* Adjust the blur level as needed */
+    z-index: 1; /* Place behind text */
+  }
+  
+  .g-container {
+    position: relative; /* To position text above the blurred background */
+    z-index: 2; /* Ensures text is above the blurred background */
+    color: white; /* Change text color for better visibility */
+    text-align: center; /* Center-align text */
+  }
+  
+  .primaryText {
+    font-size: 2rem; /* Adjust font size as needed */
+    font-weight: bold;
+  }
+  
+  .secondaryText {
+    font-size: 1.25rem; /* Adjust font size as needed */
+    margin: 1rem 0; /* Adds space around secondary text */
+  }
+  
+  .button {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the button */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: rgba(255, 255, 255, 1); /* Fully opaque on hover */
+  }
+  
+  .button a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Button text color */
+  }
+  

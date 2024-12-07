@@ -1,0 +1,22 @@
+{
+    "selectAmenities": "Select Amenities",
+    "amenitiesRequired": "At least one amenity is required",
+    "back": "Back",
+    "nextStep": "Next Step",
+    "AirConditioner": "Air Conditioner",
+    "Oven": "Oven",
+    "Microwave": "Microwave",
+    "VacuumCleaner": "Vacuum Cleaner",
+    "Balcony": "Balcony",
+    "Stove": "Stove",
+    "Dishwasher": "Dishwasher",
+    "SmartTV": "Smart TV",
+    "WiFi": "WiFi",
+    "ParkingPlace": "Parking Place",
+    "PlayStation": "PlayStation",
+    "Projector": "Projector",
+    "Elevator": "Elevator",
+    "Heating": "Heating",
+    "PET": "PET"
+  }
+  

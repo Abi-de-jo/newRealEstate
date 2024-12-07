@@ -1,0 +1,12 @@
+{
+    "country": "Страна",
+    "district": "Район",
+    "address": "Адрес",
+    "nearbyMetro": "Введите ближайшее метро",
+    "previous": "Предыдущий",
+    "nextStep": "Следующий шаг",
+    "placeholder": {
+      "address": "Адрес"
+    }
+  }
+  

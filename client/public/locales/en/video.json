@@ -1,0 +1,38 @@
+{
+       "header": "Browse Properties in Georgia, FL",
+      "loading": "Loading categories...",
+      "error": "Error fetching categories.",
+      "newListings": {
+        "title": "New Listings",
+        "description": "Published within the last 24 hours"
+      },
+      "discountedApartments": {
+        "title": "Discounted Apartments",
+        "description": "Apartments with price reductions"
+      },
+      "updatedApartments": {
+        "title": "Updated Apartments",
+        "description": "Recently updated apartments"
+      },
+      "forRent": {
+        "title": "For Rent",
+        "description": "Available for rental"
+      },
+      "forSale": {
+        "title": "For Sale",
+        "description": "Properties available for purchase"
+      },
+      "land": {
+        "title": "Land",
+        "description": "Plots of land for development"
+      },
+      "commercial": {
+        "title": "Commercial",
+        "description": "Commercial properties for sale or rent"
+      },
+      "recentlyRented": {
+        "title": "Recently Rented",
+        "description": "Properties rented recently"
+     }
+  }
+  

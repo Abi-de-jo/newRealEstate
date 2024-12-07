@@ -1,0 +1,42 @@
+{
+    "ownerCanUpload": {
+      "label": "მالكი შეგიძლიათ ატვირთოთ",
+      "description": "იყავი მالكი"
+    },
+    "uploadImage": {
+      "label": "ატვირთეთ სურათი",
+      "description": "ატვირთეთ ქონების სურათები"
+    },
+    "uploadVideo": {
+  "label": "ვიდეოს ატვირთვა",
+  "description": "ატვირთეთ ქონების ვიდეო"
+},
+
+    "uploadLocation": {
+      "label": "ატვირთეთ ადგილი",
+      "description": "დეტალური ადგილი"
+    },
+    "basicDetails": {
+      "label": "ბაზური დეტალები",
+      "description": "დაამატეთ ბაზური დეტალები"
+    },
+    "houseType": {
+      "label": "სახლი ტიპი",
+      "description": "აირჩიეთ ტიპი"
+    },
+    "amenities": {
+      "label": "საექსპერტო",
+      "description": "აირჩიეთ საჭიროებები"
+    },
+    "ownerDetails": {
+      "label": "მالكის დეტალები",
+      "description": "მالكის ინფორმაცია"
+    },
+    "facilities": {
+      "label": "ფასილიტები",
+      "description": "დაამატეთ ფასილიტები"
+    },
+    
+    "completed": "დასრულებულია, დააჭირეთ უკან, რომ დაბრუნდეთ წინა ეტაპზე"
+  }
+  

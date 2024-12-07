@@ -1,0 +1,21 @@
+{
+    "transactionType": "ტრანზაქციის ტიპი",
+    "residencyType": "რეზიდენციის ტიპი",
+    "propertyType": "ქონების ტიპი",
+    "new": "ახალი",
+    "old": "ძველი",
+    "mixed": "შერეული",
+    "rent": "ქირავდება",
+    "sale": "გაყიდვა",
+    "dailyRent": "დღიური ქირა",
+    "lease": "ქირავდება",
+    "office": "ოფისი",
+    "commercial": "კომერციული",
+    "cottage": "კოტეჯი",
+    "apartment": "აპარტამენტი",
+    "land": "მიწა",
+    "house": "სახლი",
+    "previous": "უკან",
+    "nextStep": "შემდეგი ნაბიჯი"
+  }
+  

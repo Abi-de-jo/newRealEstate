@@ -1,0 +1,12 @@
+{
+    "country": "Country",
+    "district": "District",
+    "address": "Address",
+    "nearbyMetro": "Enter Some Nearby Metro",
+    "previous": "Previous",
+    "nextStep": "Next Step",
+    "placeholder": {
+      "address": "Address"
+    }
+  }
+  

@@ -1,0 +1,54 @@
+{
+    "properties": {
+      "title": "ქონება",
+      "priceRange": "ფასი",
+      "propertyType": "ქონების ტიპი",
+      "rooms": "ოთახები",
+      "listingStatus": "სტატუსი",
+      "clearAll": "გასუფთავება",
+      "listView": "სია",
+      "more":"მეტი",
+      "mapView": "რუკა",
+      "filterLabels": {
+        "priceReduced": "ფასდაკლებული",
+        "afford": "რამდენის გადახდა შემიძლია?"
+      },
+      "filters": {
+        "any": "ნებისმიერი",
+        "office": "ოფისი",
+        "commercial": "კომერციული",
+        "cottage": "კოტეჯი",
+        "apartment": "ბინა",
+        "land": "მიწა",
+        "house": "სახლი"
+      },
+      "roomLabels": {
+        "bedrooms": "საძინებლები",
+        "bathrooms": "აბაზანები",
+        "noMin": "მინიმალური არ არის",
+        "noMax": "მაქსიმალური არ არის"
+      },
+      "statusOptions": {
+        "new": "ახალი",
+        "old": "ძველი",
+        "mixed": "შერეული"
+      },
+      "amenities": {
+        "pool": "აუზი",
+        "gym": "სავარჯიშო დარბაზი",
+        "wifi": "Wi-Fi",
+        "airConditioning": "კონდიციონერი",
+        "parking": "პარკინგი",
+        "petFriendly": "ცხოველებისთვის მეგობრული",
+        "garden": "ბაღი",
+        "balcony": "აივანი",
+        "laundry": "სარეცხი ოთახი"
+      },
+      "errors": {
+        "loadingError": "მონაცემების ჩატვირთვის შეცდომა.",
+        "noProperties": "ქონება ვერ მოიძებნა. გთხოვთ, შეცვალეთ ფილტრები."
+      },
+      "loading": "ქონების ჩატვირთვა..."
+    }
+  }
+  

@@ -1,0 +1,54 @@
+{
+    "properties": {
+      "title": "Properties",
+      "priceRange": "Price",
+      "propertyType": "Property Type",
+      "rooms": "Room",
+      "listingStatus": "Listing Status",
+      "clearAll": "Clear All",
+      "listView": "List",
+      "mapView": "Map",
+      "more": "More",
+      "filterLabels": {
+        "priceReduced": "Price reduced",
+        "afford": "How much can I afford?"
+      },
+      "filters": {
+        "any": "Any",
+        "office": "Office",
+        "commercial": "Commercial",
+        "cottage": "Cottage",
+        "apartment": "Apartment",
+        "land": "Land",
+        "house": "House"
+      },
+      "roomLabels": {
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "noMin": "No min",
+        "noMax": "No max"
+      },
+      "statusOptions": {
+        "new": "New",
+        "old": "Old",
+        "mixed": "Mixed"
+      },
+      "amenities": {
+        "pool": "Pool",
+        "gym": "Gym",
+        "wifi": "Wi-Fi",
+        "airConditioning": "Air cond.",
+        "parking": "Parking",
+        "petFriendly": "Pet Friendly",
+        "garden": "Garden",
+        "balcony": "Balcony",
+        "laundry": "Laundry"
+      },
+      "errors": {
+        "loadingError": "Error while fetching data.",
+        "noProperties": "No properties found. Please adjust your filters."
+      },
+      "loading": "Loading properties..."
+    }
+  }
+  

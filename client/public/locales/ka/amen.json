@@ -1,0 +1,22 @@
+{
+    "selectAmenities": "აირჩიეთ სიმდიდრე",
+    "amenitiesRequired": "მინიმუმ ერთი სიმდიდრე უნდა იყოს",
+    "back": "უკან",
+    "nextStep": "შემდეგი ნაბიჯი",
+    "AirConditioner": "კლიმატ კონტროლი",
+    "Oven": "ღუმელი",
+    "Microwave": "მიკროტალღური",
+    "VacuumCleaner": "ვაკუუმი",
+    "Balcony": "ბალკონი",
+    "Stove": "ღუმელის აპარატი",
+    "Dishwasher": "ჭურჭლის სარეცხი მანქანა",
+    "SmartTV": "სმარტ ტელევიზორი",
+    "WiFi": "WiFi",
+    "ParkingPlace": "პარკინგის ადგილი",
+    "PlayStation": "PlayStation",
+    "Projector": "პროჟექტორი",
+    "Elevator": "ლიფტი",
+    "Heating": "გათბობა",
+    "PET": "მოწვეული შინაური ცხოველები"
+  }
+  

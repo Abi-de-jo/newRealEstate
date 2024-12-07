@@ -1,0 +1,13 @@
+{
+    "title": "Title",
+    "description": "Description",
+    "price": "Price",
+    "area": "Area",
+    "propertyNamePlaceholder": "Property Name",
+    "descriptionPlaceholder": "Description",
+    "pricePlaceholder": "1000",
+    "areaPlaceholder": "ex: 1000 (Sq.ft)",
+    "previous": "Back",
+    "nextStep": "Next Step"
+  }
+  

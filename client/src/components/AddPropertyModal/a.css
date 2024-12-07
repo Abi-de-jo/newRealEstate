@@ -1,0 +1,16 @@
+.stepper-horizontal .mantine-Stepper-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .stepper-horizontal .mantine-Stepper-step {
+    min-width: 100px; /* Adjusts step size for mobile */
+  }
+  
+  @media (max-width: 768px) {
+    .modal-container {
+      padding: 0.5rem; /* Smaller padding on mobile */
+    }
+  }
+  

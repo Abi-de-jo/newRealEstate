@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Gradient fill animation */
+@keyframes fill {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Custom animation class for fill effect */
+.animate-fill {
+  background-image: linear-gradient(to top, rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.2));
+  background-size: 100% 200%; /* Double the height for smooth animation */
+  animation: fill 1s ease-in-out infinite; /* Adjust duration as needed */
+  -webkit-background-clip: text; /* Safari */
+  background-clip: text; /* Standard */
+  color: transparent; /* Hide text color */
+}

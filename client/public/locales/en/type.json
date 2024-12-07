@@ -1,0 +1,21 @@
+{
+    "transactionType": "Transaction Type",
+    "residencyType": "Residency Type",
+    "propertyType": "Property Type",
+    "new": "New",
+    "old": "Old",
+    "mixed": "Mixed",
+    "rent": "Rent",
+    "sale": "Sale",
+    "dailyRent": "Daily Rent",
+    "lease": "Lease",
+    "office": "Office",
+    "commercial": "Commercial",
+    "cottage": "Cottage",
+    "apartment": "Apartment",
+    "land": "Land",
+    "house": "House",
+    "previous": "Back",
+    "nextStep": "Next Step"
+  }
+  

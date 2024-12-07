@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId // Use MongoDB ObjectId native type
+  username          String?
+  email             String   @unique
+  password          String?
+  image             String?
+  bookedVisits      Json[]
+  favoriteResidency String[]
+
+  @@map("users")
+}
+
+model Agent {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  username     String
+  teleNumber   String?
+  governmentId String?
+  email        String      @unique
+  image        String?
+  residencies  Residency[] @relation("AgentResidencies")
+
+  @@map("agents")
+}
+
+model Admin {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  username     String
+  teleNumber   String?
+  password     String?
+  governmentId String?
+  email        String      @unique
+  image        String?
+  residencies  Residency[] @relation("AdminResidencies")
+
+  @@map("admins")
+}
+
+model Owner {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  username     String?
+  teleNumber   String?
+  governmentId String?
+  image        String?
+  email        String      @unique
+  residencies  Residency[] @relation("OwnerResidencies")
+
+  @@map("owners")
+}
+
+model Residency {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  images        String[]
+  title         String?
+  video         String?
+  address       String
+  metro         String[]
+  district      String[]
+  propertyType  String?
+  residencyType String?
+  price         Float
+  discount      Float?
+  commission    Float?
+  rooms         Int?
+  area          Float?
+  type          String?
+  parking       Int?
+  balcony       Boolean?
+  bathrooms     Int?
+  amenities     String[]
+  description   String
+  status        String
+
+  agentEmail String?
+  agent      Agent?  @relation(fields: [agentEmail], references: [email], name: "AgentResidencies")
+
+  adminEmail String?
+  admin      Admin?  @relation(fields: [adminEmail], references: [email], name: "AdminResidencies")
+
+  ownerEmail String?
+  owner      Owner?  @relation(fields: [ownerEmail], references: [email], name: "OwnerResidencies")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("residencies")
+}
+
+model Customer {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  passport_no    Int
+  rental_period  String[]
+  price          Int
+  codastral_code Int
+  owner          String
+  date           String[]
+
+  @@map("customers")
+}

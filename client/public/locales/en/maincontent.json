@@ -1,0 +1,31 @@
+{
+      "dashboard": "Dashboard",
+      "agents": "Agents",
+      "owners": "Owners",
+      "residency": "Residency",
+      "settings": "Settings",
+      "newAgent": "New Agent",
+      "newOwner": "New Owner",
+      "newResidency": "New Residency",
+      "all": "All",
+      "allAgents": "All Agents",
+      "allOwners": "All Owners",
+      "allResidencies": "All Residencies",
+      "createAgent": "Create New Agent",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "phoneNumber": "Phone Number",
+      "loading": "Loading...",
+      "error": "Error loading data. Please try again later.",
+      "needAssistance": "Need Assistance?",
+      "contactSupport": "Contact our support team for help.",
+      "getSupport": "Get Support",
+      "create": "Create",
+      "cancel": "Cancel",
+      "searchPlaceholder": "Search...",
+      "notifications": "Notifications",
+      "admin": "Admin"
+    }
+  
+  

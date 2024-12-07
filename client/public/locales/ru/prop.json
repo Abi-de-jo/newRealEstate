@@ -1,0 +1,54 @@
+{
+    "properties": {
+        "more":"более",
+      "title": "Недвижимость",
+      "priceRange": "Цена",
+      "propertyType": "Тип недвижимости",
+      "rooms": "Комнаты",
+      "listingStatus": "Статус",
+      "clearAll": "Очистить всё",
+      "listView": "Список",
+      "mapView": "Карта",
+      "filterLabels": {
+        "priceReduced": "Цена снижена",
+        "afford": "Сколько я могу себе позволить?"
+      },
+      "filters": {
+        "any": "Любой",
+        "office": "Офис",
+        "commercial": "Коммерческая",
+        "cottage": "Коттедж",
+        "apartment": "Квартира",
+        "land": "Земля",
+        "house": "Дом"
+      },
+      "roomLabels": {
+        "bedrooms": "Спальни",
+        "bathrooms": "Ванные комнаты",
+        "noMin": "Без минимума",
+        "noMax": "Без максимума"
+      },
+      "statusOptions": {
+        "new": "Новый",
+        "old": "Старый",
+        "mixed": "Смешанный"
+      },
+      "amenities": {
+        "pool": "Бассейн",
+        "gym": "Тренажерный зал",
+        "wifi": "Wi-Fi",
+        "airConditioning": "Кондиционер",
+        "parking": "Парковка",
+        "petFriendly": "Подходит для животных",
+        "garden": "Сад",
+        "balcony": "Балкон",
+        "laundry": "Прачечная"
+      },
+      "errors": {
+        "loadingError": "Ошибка загрузки данных.",
+        "noProperties": "Недвижимость не найдена. Измените фильтры."
+      },
+      "loading": "Загрузка недвижимости..."
+    }
+  }
+  

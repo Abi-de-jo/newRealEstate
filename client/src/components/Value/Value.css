@@ -1,0 +1,141 @@
+.v-container .image-container {
+    border: 8px solid rgb(232 232 232 / 93%);
+  }
+  .v-container > div {
+    flex: 1;
+  }
+  .v-right {
+    gap: 0.5rem;
+  }
+  .accordion {
+    margin-top: 2rem;
+    border: none;
+  }
+  .accordionItem {
+    background: white;
+    border: 0.8px solid rgba(128, 128, 128, 0.143);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .accordionItem.expanded {
+    box-shadow: var(--shadow);
+    border-radius: 6px;
+  }
+  .accordionButton {
+    background: white;
+    padding: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .icon {
+    padding: 10px;
+    background: #eeeeff;
+    border-radius: 5px;
+  }
+  .icon svg {
+    fill: var(--blue);
+  }
+  
+  .accordionButton .primaryText{
+      font-size: 1.1rem;
+  }
+  
+  @media (max-width: 1024px) {
+      .v-container{
+          flex-direction: column;
+      }
+  }
+  
+  @media (max-width: 768px) {
+      .accordionButton .primaryText{
+          font-size: .8rem;
+      }
+  }
+
+
+  .image-container {
+    position: relative; /* Required for positioning the shadow */
+    overflow: hidden; /* Ensures the image does not overflow the container */
+    border-radius: 15px; /* Optional: adds rounded corners to the image */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adjust shadow as needed */
+  }
+  
+  .image-container img {
+    width: 100%; /* Ensures the image fits within the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes bottom space for inline images */
+    border-radius: 15px; /* Matches the container for rounded corners */
+  }
+  
+
+  .v-wrapper {
+    padding: 60px 0; /* Adjust as needed for top/bottom spacing */
+    background-color: #f9f9f9; /* Light background for contrast */
+  }
+  
+  .v-container {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    justify-content: space-between; /* Space out left and right */
+  }
+  
+  .v-left {
+    flex: 1; /* Flex item to take available space */
+  }
+  
+  .v-right {
+    flex: 1; /* Flex item to take available space */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+  }
+  
+  .image-container {
+    position: relative; /* Required for positioning the shadow */
+    overflow: hidden; /* Ensures the image does not overflow the container */
+    border-radius: 15px; /* Optional: adds rounded corners to the image */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Box shadow effect */
+  }
+  
+  .image-container img {
+    width: 100%; /* Ensures the image fits within the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes bottom space for inline images */
+    border-radius: 15px; /* Matches the container for rounded corners */
+  }
+  
+  .orangeText {
+    color: #ff5722; /* Example orange color */
+    font-size: 1.5rem; /* Example font size */
+  }
+  
+  .primaryText {
+    font-size: 2rem; /* Example font size */
+    font-weight: bold; /* Bold text */
+  }
+  
+  .secondaryText {
+    font-size: 1rem; /* Smaller text for details */
+    color: #555; /* Grey text color */
+  }
+  
+  .accordion {
+    margin-top: 20px; /* Space above accordion */
+  }
+  
+  .accordionItem {
+    margin-bottom: 10px; /* Space between accordion items */
+  }
+  
+  .accordionButton {
+    display: flex; /* Flex layout for button */
+    align-items: center; /* Center align items vertically */
+  }
+  
+  .icon {
+    margin-right: 10px; /* Space between icon and text */
+  }
+  

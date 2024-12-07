@@ -1,0 +1,40 @@
+{
+    "ownerCanUpload": {
+      "label": "Владелец может загрузить",
+      "description": "Будьте владельцем"
+    },
+    "uploadImage": {
+      "label": "Загрузить изображение",
+      "description": "Загрузите изображения недвижимости"
+    },
+    "uploadVideo": {
+  "label": "Загрузить видео",
+  "description": "Загрузите видео недвижимости"
+},
+    "uploadLocation": {
+      "label": "Загрузить местоположение",
+      "description": "Детальное местоположение"
+    },
+    "basicDetails": {
+      "label": "Основные детали",
+      "description": "Добавьте основные детали"
+    },
+    "houseType": {
+      "label": "Тип дома",
+      "description": "Выберите тип"
+    },
+    "amenities": {
+      "label": "Удобства",
+      "description": "Выберите удобства"
+    },
+    "ownerDetails": {
+      "label": "Детали владельца",
+      "description": "Информация о владельце"
+    },
+    "facilities": {
+      "label": "Услуги",
+      "description": "Добавьте услуги"
+    },
+    "completed": "Завершено, нажмите кнопку назад, чтобы вернуться на предыдущий шаг"
+  }
+  

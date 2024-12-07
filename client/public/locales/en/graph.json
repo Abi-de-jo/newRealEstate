@@ -1,0 +1,19 @@
+{
+       "overviewTitle": "Overview of Data",
+      "agents": "Agents",
+      "owners": "Owners",
+      "residency": "Residency",
+      "loading": "Loading data...",
+      "totalAgents": "Total Agents",
+      "publishedResidencies": "Published Residencies",
+      "agentDraftResidencies": "Agent Draft Residencies",
+      "totalOwners": "Total Owners",
+      "ownersCreated": "Owners Created",
+      "accepted": "Accepted",
+      "published": "Published",
+      "draft": "Draft",
+      "agentsAchieve": "Agents Achieve",
+      "agentsDraft": "Agents Draft",
+      "clickHint": "Click on a category to explore detailed data."
+   }
+  
