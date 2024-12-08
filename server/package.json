@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm rebuild bcrypt --build-from-source"
+    "postinstall": "chmod +x node_modules/.bin/prisma && prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",
