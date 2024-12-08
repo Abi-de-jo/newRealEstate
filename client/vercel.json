@@ -1,12 +1,3 @@
 {
-    "version": 2,
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ],
-    "build": {
-      "env": {
-        "NODE_VERSION": "18.x"
-      }
-    }
-  }
-  
+  "rewrites":[{"source":"/(.*)","destination":"/"}]
+}
