@@ -56,7 +56,7 @@ const Layout = () => {
     const getAccessAndRegister = async () => {
       const res = await getAccessTokenWithPopup({
         authorizationParams: {
-          audience: "https://new-real-estate-server.vercel.app/",
+          audience: "https://new-real-estate-server.vercel.app",
           scope: "openid profile email",
         },
       });
