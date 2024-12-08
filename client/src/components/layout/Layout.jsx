@@ -5,7 +5,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UserDetailContext from "../../context/UserDetailsContext";
 import { useMutation } from "react-query";
 import { createAgent, createUser } from "../../utils/api";
- import axios from "axios";
+ import { toast } from "react-toastify";
+import axios from "axios";
 import GeoMapFooterDark from "../Footer/Footer";
 import useLikes from "../../hooks/useLikes";
 
@@ -47,8 +48,8 @@ const Layout = () => {
         console.log("Owner not found, role not updated");
       }
     } catch (err) {
-      console.error("", err);
-       
+      console.error("Something went wrong", err);
+      toast.error("Something went wrong");
     }
   }
 
@@ -56,7 +57,7 @@ const Layout = () => {
     const getAccessAndRegister = async () => {
       const res = await getAccessTokenWithPopup({
         authorizationParams: {
-          audience: "https://new-real-estate-server.vercel.app",
+          audience: "http://localhost:3000/",
           scope: "openid profile email",
         },
       });
@@ -65,10 +66,10 @@ const Layout = () => {
 
       if (role === "agent") {
         RegisterA(res);
-        console.log("Agent Registered");
+        console.log("Agent Registered:", role);
       } else if (role === "user") {
         RegisterO(res);
-        console.log("User Registered");
+        console.log("User Registered:", role);
       }
     };
 
