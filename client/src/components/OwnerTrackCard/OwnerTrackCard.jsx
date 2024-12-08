@@ -10,55 +10,64 @@ const OwnerTrackCard = ({ card }) => {
 
   return (
     <div
-      className="flex flex-col items-start cursor-pointer bg-white rounded-lg shadow-lg shadow-gray-400/50 transform transition-all duration-300 hover:shadow-md hover:translate-y-1"
+      className="flex flex-col bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden w-full max-w-sm mx-auto"
       onClick={() => navigate(`../track-property/${card.id}`)}
     >
       {/* Image Section */}
-      <div className="relative w-full h-40 rounded-t-lg overflow-hidden">
+      <div className="relative w-full h-48">
         <img
           src={card.images[0]}
-          alt="home"
+          alt="Property"
           className="w-full h-full object-cover"
         />
-        <span className="absolute top-1 right-1 w-16 rounded-full">
-          <img src="./watermark.png" alt="" />
+        <span className="absolute top-2 right-2">
+          <img
+            src="./watermark.png"
+            alt="watermark"
+            className="w-10 h-10 opacity-80"
+          />
         </span>
       </div>
 
-      {/* Price and Heart */}
-      <div className="flex items-center justify-between w-full px-3 py-2">
-        <span className="text-black text-lg font-semibold">
-          <span className="text-orange-500">$</span>
-          {card.price}
-        </span>
-      </div>
-
-      {/* Title and Address */}
-      <div className="px-3 mt-2 flex flex-col gap-1">
-        <span className="text-base font-bold">{truncate(card.title)}</span>
-        <p className="text-sm text-gray-500">
-          {truncate(card.address, { length: 30 })}
-        </p>
-      </div>
-
-      {/* Facilities Section */}
-      <div className="flex gap-2 px-3 mt-2 flex-wrap">
-        {/* Bathroom */}
-        <div className="flex items-center gap-1 p-1 rounded-md bg-gray-100">
-          <FaShower size={16} className="text-blue-500" />
-          <span className="text-xs text-gray-700">{card.bathroom} Bath</span>
+      {/* Details Section */}
+      <div className="p-4">
+        {/* Price Section */}
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-lg font-semibold text-gray-800">
+            <span className="text-orange-500">$</span>
+            {card.price}
+          </span>
         </div>
 
-        {/* Parking */}
-        <div className="flex items-center gap-1 p-1 rounded-md bg-gray-100">
-          <AiTwotoneCar size={16} className="text-blue-500" />
-          <span className="text-xs text-gray-700">{card.parking} Park</span>
+        {/* Title and Address */}
+        <div className="mb-4">
+          <h3 className="text-base font-bold text-gray-800">
+            {truncate(card.title, { length: 40 })}
+          </h3>
+          <p className="text-sm text-gray-500">
+            {truncate(card.address, { length: 50 })}
+          </p>
         </div>
 
-        {/* Rooms */}
-        <div className="flex items-center gap-1 p-1 rounded-md bg-gray-100">
-          <MdMeetingRoom size={16} className="text-blue-500" />
-          <span className="text-xs text-gray-700">{card.rooms} Room</span>
+        {/* Facilities Section */}
+        <div className="flex justify-between items-center gap-2">
+          {/* Bathrooms */}
+          <div className="flex items-center gap-1 text-gray-700 text-sm">
+            <FaShower size={18} className="text-blue-500" />
+            <span>{card.bathrooms} Bath</span>
+          </div>
+
+          {/* Parking */}
+          <div className="flex items-center gap-1 text-gray-700 text-sm">
+            <AiTwotoneCar size={18} className="text-blue-500" />
+            <span>{card.parking} Park</span>
+          </div>
+
+          {/* Rooms */}
+          <div className="flex items-center gap-1 text-gray-700 text-sm">
+            <MdMeetingRoom size={18} className="text-blue-500" />
+            <span>{card.rooms} Room</span>
+          </div>
         </div>
       </div>
     </div>

@@ -118,7 +118,8 @@ const GeoMapFooterDark = () => {
 
         {/* Disclaimer */}
         <div className="text-center text-gray-400 text-sm mt-4">
-          <p>© 1995-2024 National Association of REALTORS® and Move, Inc. All rights reserved.</p>
+          <p>© 1995-2024 GeoMap and Move, Inc. All rights reserved.</p>
+          <p className="text-blue-700">Developed by TechBuddies</p>
         </div>
       </div>
     </footer>

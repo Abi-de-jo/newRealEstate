@@ -9,8 +9,7 @@ import { FaShower } from "react-icons/fa";
 import GoogleMapSection from "../../components/Map/GoogleMapSection";
 import { useAuth0 } from "@auth0/auth0-react";
 import BookingModal from "../../components/BookingModal/BookingModal";
-import Heart from "../../components/Heart/Heart";
-import { Modal } from "@mantine/core";
+ import { Modal } from "@mantine/core";
 import axios from "axios";
 
 export const OwnerTrackDraftId = () => {
@@ -69,10 +68,8 @@ export const OwnerTrackDraftId = () => {
       <div className="flexColStart paddings innerWidth property-container">
         {/* LIKE */}
         <div className="relative w-full h-[500px] mt-6">
-          <div className="absolute top-4 left-4 z-10">
-            <Heart id={id} />
-          </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full h-full">
+          
+          <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full h-full ">
             <img
               src={data?.images[0]}
               alt="main home"

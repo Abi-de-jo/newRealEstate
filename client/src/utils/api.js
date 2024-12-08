@@ -534,9 +534,14 @@ export const getAllLikes = async () => {
 
 
 export const createResidency = async (data, token) => {
-  const { user, ...others } = data;
-  const email = others.email;
   
+  const { user, ...others } = data;
+  let email = others.email;
+  if (!email) {
+    email = localStorage.getItem("adminEmail");
+    
+  }
+ 
   try {
     const res = await api.post(
       '/residency/create',

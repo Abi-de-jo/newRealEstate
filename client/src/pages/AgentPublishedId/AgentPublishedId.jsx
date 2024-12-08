@@ -56,8 +56,7 @@ export const AgentPublishedId = () => {
       setEditFormData({
         title: data.title || "",
         price: data.price || "",
-        discount: data.discount || "",
-        description: data.description || "",
+         description: data.description || "",
         address: data.address || "",
         district: data.district || "",
         type: data.type || "",
@@ -101,10 +100,7 @@ const handleDiscountFormSubmit = async (e) => {
 };
 
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setEditFormData((prev) => ({ ...prev, images: files }));
-  };
+  
 
   const handleEditInputChange = (e) => {
     const { name, value } = e.target;
@@ -120,21 +116,12 @@ const handleDiscountFormSubmit = async (e) => {
 
     const updatedData = { ...editFormData };
 
-    updatedData.images = editFormData.images;
-
+ 
     console.log("Updated Data:", updatedData);
 
-    const formData = new FormData();
+   
 
-    Object.entries(updatedData).forEach(([key, value]) => {
-      if (key !== "images") {
-        formData.append(key, value);
-      }
-    });
-
-    editFormData.images.forEach((file, index) => {
-      formData.append(`images[${index}]`, file);
-    });
+  
 
     try {
       // Sending the updated form data (including files) to the backend
@@ -234,7 +221,7 @@ const handleDiscountFormSubmit = async (e) => {
   if (isError) return <ErrorMessage />;
 
   return (
-    <div className="wrapper">
+    <div className="wrapper mt-4">
       <div className="flex flex-col items-start p-4 md:p-6 w-full max-w-7xl mx-auto">
         <PropertyImages images={data?.images} id={id} />
         <div className="flex flex-col md:flex-row justify-between w-full mt-6">
@@ -255,7 +242,7 @@ const handleDiscountFormSubmit = async (e) => {
         </div>
         <AmenitiesModal opened={opened} setOpened={setOpened} amenities={data?.amenities} />
         <RentAgentModal opened={rentAgentModalOpen} setOpened={setRentAgentModalOpen} formData={formData} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
-        <EditPropertyModal opened={editModalOpen} setOpened={setEditModalOpen} editFormData={editFormData} handleEditInputChange={handleEditInputChange} handleImageChange={handleImageChange} handleEditFormSubmit={handleEditFormSubmit} />
+        <EditPropertyModal opened={editModalOpen} setOpened={setEditModalOpen} editFormData={editFormData} handleEditInputChange={handleEditInputChange} handleEditFormSubmit={handleEditFormSubmit} />
         <EditDiscount
   opened={DiscountModalOpen}
   setOpened={setDiscountModalOpen}
@@ -456,8 +443,7 @@ const EditPropertyModal = ({
   editFormData,
   handleEditInputChange,
   handleEditFormSubmit,
-  handleImageChange,
-  handleRemoveImage,
+   
 }) => (
   <Modal
     opened={opened}
@@ -473,8 +459,7 @@ const EditPropertyModal = ({
       {[
         "title",
         "price",
-        "discount",
-        "description",
+         "description",
         "address",
         "district",
         "type",
@@ -489,7 +474,7 @@ const EditPropertyModal = ({
           </label>
           <input
             id={field}
-            type={["price", "discount"].includes(field) ? "number" : "text"}
+            type={["price"].includes(field) ? "number" : "text"}
             name={field}
             placeholder={`Enter ${field}`}
             value={editFormData[field]}
@@ -500,43 +485,7 @@ const EditPropertyModal = ({
       ))}
 
       {/* Image Previews with Plus Icon */}
-      <div className="flex flex-wrap gap-4">
-        {editFormData.images?.map((file, index) => (
-          <div
-            key={index}
-            className="relative w-24 h-24 border rounded-lg shadow-md"
-          >
-            <img
-              src={typeof file === "string" ? file : URL.createObjectURL(file)}
-              alt={`Preview ${index}`}
-              className="w-full h-full object-cover rounded-lg"
-            />
-            <button
-              type="button"
-              onClick={() => handleRemoveImage(index)}
-              className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 shadow-md hover:bg-red-600"
-              title="Remove Image"
-            >
-              <AiOutlineClose size={16} />
-            </button>
-          </div>
-        ))}
-
-        {/* Plus Icon for Uploading New Images */}
-        <label
-          className="cursor-pointer flex items-center justify-center w-24 h-24 bg-gray-200 rounded-lg border border-dashed border-gray-400 hover:bg-gray-300 transition-all"
-          title="Add New Images"
-        >
-          <AiOutlinePlus size={24} className="text-gray-500" />
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleImageChange}
-            className="hidden"
-          />
-        </label>
-      </div>
+     
 
       {/* Submit Button */}
       <button
@@ -584,7 +533,7 @@ const EditDiscount = ({
           value={discountData.discount || ""}
           onChange={(e) => handleDiscountInputChange(e)}
           className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
+           
         />
       </div>
 

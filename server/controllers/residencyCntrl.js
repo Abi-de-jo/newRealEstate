@@ -333,38 +333,27 @@ export const publishResidency = asyncHandler(async (req, res) => {
 export const updateResidency = asyncHandler(async (req, res) => {
   const { id } = req.params; // Residency ID
   const data = req.body; // Property data from frontend
-  const files = req.files; // Uploaded files (new images)
-  
+  console.log(req.body);
+
   try {
-    // Extract existing images and new images
-    const existingImages = data.existingImages || []; // URLs of existing images
-    const newImages = files?.map((file) => file.path) || []; // Paths of uploaded images
-
-    // Combine existing and new images
-    const updatedImages = [...existingImages, ...newImages];
-
-    // Update the residency in the database
     const residency = await prisma.residency.update({
       where: { id: id },
       data: {
         title: data.title,
         price: parseFloat(data.price),
-        discount: parseFloat(data.discount),
-        description: data.description,
+         description: data.description,
         address: data.address,
         district: data.district,
         type: data.type,
         metro: data.metro,
-        images: updatedImages, // Save updated images array
+        images: data.images,  
       },
     });
-
     res.status(200).json({ message: "Residency updated successfully", residency });
   } catch (err) {
-    console.error("Error updating residency:", err);
     res.status(500).json({ message: err.message });
   }
-});
+}); 
 
 
 

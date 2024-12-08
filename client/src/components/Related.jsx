@@ -26,6 +26,8 @@ const getTimeDifference = (updatedAt) => {
   }
 };
 
+const role =  localStorage.getItem("role")
+
 const Related = ({ currentProperty, allProperties }) => {
   const navigate = useNavigate();
   const [likedProperties, setLikedProperties] = useState([]);
@@ -92,7 +94,7 @@ const Related = ({ currentProperty, allProperties }) => {
               <FiGlobe className="text-gray-600" />
             </span>
             {/* Heart Icon */}
-            <button
+          {role === "user" &&  <button
               className={`absolute top-3 right-3 bg-white p-2 rounded-full shadow-md transition-transform duration-300 ${
                 likedProperties.includes(property.id) ? "scale-110 text-red-500" : "text-gray-500"
               } hover:scale-125`}
@@ -106,7 +108,7 @@ const Related = ({ currentProperty, allProperties }) => {
               ) : (
                 <AiOutlineHeart size={18} />
               )}
-            </button>
+            </button>}
           </div>
 
           {/* Property Details */}

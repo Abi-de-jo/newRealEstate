@@ -41,11 +41,20 @@ function AgentProfileCard() {
   const handleSaveChanges = async () => {
     try {
       const payload = {
-        image: newProfilePic?.split(",")[1], // Remove Base64 prefix
+        image: newProfilePic ? newProfilePic.split(",")[1] : agentData.image, // Use new profile pic or fallback to the current image
         email: newEmail,
         teleNumber: newTeleNumber,
       };
-      await axios.put(`${API_BASE_URL}/update/${agentData.id}`, payload);
+      const response = await axios.put(`${API_BASE_URL}/update/${agentData.id}`, payload);
+
+      // Update local agentData state with the latest changes
+      setAgentData((prevData) => ({
+        ...prevData,
+        image: response.data.image, // Update with new image from response
+        email: response.data.email,
+        teleNumber: response.data.teleNumber,
+      }));
+
       alert("Profile updated successfully!");
       setIsEditing(false);
     } catch (error) {
@@ -64,8 +73,8 @@ function AgentProfileCard() {
       <div className="flex flex-col items-center mb-6">
         <div className="relative">
           <img
-            src={agentData.image || "nothing"}
-            alt=""
+            src={newProfilePic || agentData.image || "https://via.placeholder.com/150"}
+            alt="Profile"
             className="w-28 h-28 rounded-full object-cover border-4 border-blue-500 shadow-md"
           />
           {isEditing && (
@@ -85,8 +94,8 @@ function AgentProfileCard() {
       {/* Contact Information */}
       <div className="border-t border-gray-300 pt-4">
         <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600 font-medium">Email:</span>
+          <div className="flex justify-between items-center flex-wrap">
+            <span className="text-gray-600 font-medium ">Email:</span>
             {isEditing ? (
               <input
                 type="email"
@@ -95,7 +104,7 @@ function AgentProfileCard() {
                 className="text-gray-700 border-b border-gray-300 focus:outline-none"
               />
             ) : (
-              <p className="text-gray-700">{newEmail}</p>
+              <p className="text-gray-700 flex-wrap">{newEmail}</p>
             )}
           </div>
           <div className="flex justify-between items-center">

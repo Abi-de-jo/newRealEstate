@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
+ import { AiOutlineClose } from "react-icons/ai";
 import { FiHeart, FiUser } from "react-icons/fi";
 import OutsideClickHandler from "react-outside-click-handler";
 import AddPropertyModal from "../AddPropertyModal/AddPropertyModal";
@@ -35,6 +34,9 @@ function Header() {
       alert(t("mustSignIn"));
     }
   };
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   const handleLoginRedirect = (userRole) => {
     setRole(userRole);
@@ -53,26 +55,49 @@ function Header() {
   const navItems = useMemo(
     () => (
       <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-6 space-y-4 lg:space-y-0">
-        <NavLink to="/home" className="text-gray-800 hover:text-red-600 font-medium text-sm">
+        <NavLink
+          to="/home"
+          className="text-gray-800 hover:text-red-600 font-medium text-sm"
+          onClick={closeMenu}
+        >
           {t("Home")}
         </NavLink>
-        <NavLink to="/buy" className="text-gray-800 hover:text-red-600 font-medium text-sm">
+        <NavLink
+          to="/buy"
+          className="text-gray-800 hover:text-red-600 font-medium text-sm"
+          onClick={closeMenu}
+        >
           {t("buy")}
         </NavLink>
-        <NavLink to="/rent" className="text-gray-800 hover:text-red-600 font-medium text-sm">
+        <NavLink
+          to="/rent"
+          className="text-gray-800 hover:text-red-600 font-medium text-sm"
+          onClick={closeMenu}
+        >
           {t("rent")}
         </NavLink>
-        <NavLink to="/properties" className="text-gray-800 hover:text-red-600 font-medium text-sm">
+        <NavLink
+          to="/properties"
+          className="text-gray-800 hover:text-red-600 font-medium text-sm"
+          onClick={closeMenu}
+        >
           {t("properties")}
         </NavLink>
         {["agent", "admin"].includes(role) && (
-          <NavLink to="/draft" className="text-gray-800 hover:text-red-600 font-medium text-sm">
+          <NavLink
+            to="/draft"
+            className="text-gray-800 hover:text-red-600 font-medium text-sm"
+            onClick={closeMenu}
+          >
             {t("drafts")}
           </NavLink>
         )}
         {["user", "agent", "admin", "owner"].includes(role) && (
           <button
-            onClick={handleAddPropertyClick}
+            onClick={() => {
+              handleAddPropertyClick();
+              closeMenu();
+            }}
             className="text-gray-800 hover:text-red-600 font-medium text-sm"
           >
             {t("addProperty")}

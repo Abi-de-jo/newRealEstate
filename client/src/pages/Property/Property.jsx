@@ -46,8 +46,7 @@ export const Property = () => {
       return diffInSeconds === 1 ? "1sec ago" : `${diffInSeconds}secs ago`;
     }
   };
-  const telegramBaseUrlTele = "https://t.me/agent_abi_bot";
-
+ 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768); // Mobile view if screen width is less than 768px
@@ -103,19 +102,23 @@ export const Property = () => {
       </div>
     );
   }
-
-  const handleTele = () => {
-    const telegramBaseUrl = "https://t.me/agent_abi_bot";
   
-    // Default user message
-    const userName = user?.name || "User";
-    const defaultMessage = `Hello Agent, I'm ${userName}, and I'm interested in this property.`;
+  const handleTele = () => {
+    
+    const defaultMessage = `Hello Agent, I'm interested in this property.`;
+    const telegramBaseUrl = "https://t.me/agent_abi_bot";
+    
+  
+    
   
     // Constructing the formatted message
-    const formattedMessage = `
-  🚨 *New Property Inquiry!* 🚨
+    const formattedMessage = 
+     
+    
+    `
+    🚨 *New Property Inquiry!* 🚨
   
-  📄 **User Details**:
+   📄 **User Details**:
   - **Email**: ${user?.email || "Not provided"}
   
   🏠 **Property Details**:
@@ -126,25 +129,29 @@ export const Property = () => {
   - **District**: ${data?.district || "N/A"}
   - **Type**: ${data?.type || "N/A"}
   - **Metro**: 🚇 ${data?.metro || "N/A"}
-  
+   
   🖼 **Images**:
   ${data?.images?.map((img, index) => `${index + 1}️⃣ ${img}`).join("\n") || "No images available"}
   
-  💬 **User Message**:
-  ${defaultMessage}
-  
-  🔔 *Please review and take necessary action.*
+  🔔 ${defaultMessage}
     `;
+
   
-    // Construct Telegram URL
+     
+  
     const telegramUrl = `${telegramBaseUrl}?text=${encodeURIComponent(formattedMessage)}`;
   
-    // Open Telegram with the constructed URL
+    // Redirect user to the Telegram bot
     window.open(telegramUrl, "_blank");
   
-   
+    // Log details for debugging purposes
+    
   };
   
+  
+
+
+
 
 
 
@@ -267,7 +274,7 @@ export const Property = () => {
                   <div key={index} className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
                     <img
                       src={src}
-                      alt={`Property Image ${index + 1}`}
+                      alt={`Property   ${index + 1}`}
                       className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
@@ -538,12 +545,13 @@ export const Property = () => {
             </div>
 
             <div className="flex gap-3 mt-7">
-              <button
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all duration-300"
-                onClick={handleTele}
-              >
-                Write to Telegram
-              </button>
+            <button
+  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all duration-300"
+  onClick={handleTele}
+>
+  Write to Telegram
+</button>
+
               <button
                 className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-all duration-300"
                 onClick={() => {
