@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import "./App.css";
 import Website from "./pages/Website";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -59,6 +59,12 @@ import Home from "./pages/Home";
 import AdminHeader from "./components/AdminHeader";
 import AgentHeder from "./components/AgentHeder";
   function App() {
+
+    const telegram = window.Telegram.WebApp;
+    useEffect(()=>{
+
+      telegram.ready()
+    })
   const queryClient = new QueryClient();
 
   const [userDetails, setUserDetails] = useState({
