@@ -102,23 +102,23 @@ const AddPropertyModal = ({ opened, setOpened }) => {
               />
             </Stepper.Step>
           )}
-
           <Stepper.Step
-            label={t("uploadVideo.label")}
-            description={t("uploadVideo.description")}
+            label={t("uploadImage.label")}
+            description={t("uploadImage.description")}
           >
-            <UploadVideo
+            <UploadImage
               prevStep={prevStep}
               nextStep={nextStep}
               propertyDetails={propertyDetails}
               setPropertyDetails={setPropertyDetails}
             />
           </Stepper.Step>
+
           <Stepper.Step
-            label={t("uploadImage.label")}
-            description={t("uploadImage.description")}
+            label={t("uploadVideo.label")}
+            description={t("uploadVideo.description")}
           >
-            <UploadImage
+            <UploadVideo
               prevStep={prevStep}
               nextStep={nextStep}
               propertyDetails={propertyDetails}

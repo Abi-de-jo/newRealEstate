@@ -17,19 +17,21 @@ const Hero = () => {
         backgroundImage: "url('/geo4.jpg')",
       }}
     >
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+        <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
           {t("title")}
         </h1>
 
         {/* Navigation Links */}
-        <div className="flex flex-wrap justify-center space-x-4 sm:space-x-6 text-white text-sm sm:text-lg mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-white text-base sm:text-lg mb-6 sm:mb-8">
           {["buy", "rent", "sell"].map((label) => (
             <a
-              href="/"
+              href="/buy"
               key={label}
               className="relative text-white after:content-[''] after:absolute after:bottom-[-2px] sm:after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-transparent hover:after:bg-white after:scale-0 hover:after:scale-100 after:origin-left transition-transform duration-300"
             >
@@ -39,7 +41,7 @@ const Hero = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="w-full px-4">
+        <div className="w-full max-w-md px-4">
           <SearchBar
             selectedAddress={handleSearch}
             setCoordinates={(coords) => console.log("Coordinates:", coords)}

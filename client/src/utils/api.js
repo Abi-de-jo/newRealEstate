@@ -23,6 +23,35 @@ export const getAllProperties = async () => {
     throw error;
   }
 };
+export const getAllOwners = async () => {
+  try {
+    const response = await api.get("/owner/getOwner", {
+      timeout: 10 * 10000,
+    });
+    if (response.status === 400 || response.status === 500) {
+      throw response.data;
+    }
+    return response.data;
+  } catch (error) {
+    toast.error("Something went wrong Owners");
+    throw error;
+  }
+};
+
+export const getAllAgents = async () => {
+  try {
+    const response = await api.get("/agent/getAgent", {
+      timeout: 10 * 10000,
+    });
+    if (response.status === 400 || response.status === 500) {
+      throw response.data;
+    }
+    return response.data;
+  } catch (error) {
+    toast.error("Something went wrong Owners");
+    throw error;
+  }
+};
 
 
 
@@ -554,31 +583,4 @@ export const getAllBookings = async () => {
 
 
 
-export const getAllAgents = async () => {
-  try {
-    const response = await api.get("/agent/allAgents", {
-      timeout: 10 * 10000,
-    });
-    if (response.status === 400 || response.status === 500) {
-      throw response.data;
-    }
-    return response.data;
-  } catch (error) {
-    toast.error("Something went wrong gfhb");
-    throw error;
-  }
-};
-export const getAllOwners = async () => {
-  try {
-    const response = await api.get("/owner/allOwners", {
-      timeout: 10 * 10000,
-    });
-    if (response.status === 400 || response.status === 500) {
-      throw response.data;
-    }
-    return response.data;
-  } catch (error) {
-    toast.error("Something went wrong gfhb");
-    throw error;
-  }
-};
+ 

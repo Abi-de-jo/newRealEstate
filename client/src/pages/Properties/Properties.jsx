@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useTransition } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { BuildingIcon, ChevronDown, X } from 'lucide-react';
 import useProperties from "../../hooks/useProperties";
 import PuffLoader from "react-spinners/PuffLoader";
@@ -10,6 +10,7 @@ import { Briefcase, Home, TreePine, LayoutGrid } from "lucide-react";
 import { FaBuilding } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
  // import { useAuth0 } from "@auth0/auth0-react";
+import "./properties.css"
 
 const propertyOptions = [
   { label: "Any", icon: <LayoutGrid /> },
@@ -69,45 +70,47 @@ const PropertyTypeDropdown = ({ value, onChange }) => {
   );
 };
 
-const RoomsDropdown = ({ minrooms, maxrooms, minBathrooms, maxBathrooms, onChange }) => (
-  <div className="absolute mt-2 bg-white border rounded-lg shadow-lg w-72 p-4 -ml-44">
-    <div className="flex justify-between items-center mb-4">
-      <h3 className="text-lg font-semibold">Rooms</h3>
-    </div>
-    {["Bedrooms", "Bathrooms"].map((label, idx) => (
-      <div key={label} className="mb-4">
-        <label className="block font-medium mb-2">{label}</label>
-        <div className="flex gap-2">
-          <select
-            value={idx === 0 ? minrooms : minBathrooms}
-            onChange={(e) => onChange(idx === 0 ? "minrooms" : "minBathrooms", e.target.value)}
-            className="w-full p-2 border rounded"
-          >
-            <option value="">No min</option>
-            {[...Array(6)].map((_, i) => (
-              <option key={i} value={i + 1}>
-                {i + 1}
-              </option>
-            ))}
-          </select>
-          <span className="mx-1">-</span>
-          <select
-            value={idx === 0 ? maxrooms : maxBathrooms}
-            onChange={(e) => onChange(idx === 0 ? "maxrooms" : "maxBathrooms", e.target.value)}
-            className="w-full p-2 border rounded"
-          >
-            <option value="">No max</option>
-            {[...Array(6)].map((_, i) => (
-              <option key={i} value={i + 1}>
-                {i + 1}
-              </option>
-            ))}
-          </select>
-        </div>
+const RoomsDropdown = ({ minrooms, maxrooms, minBathrooms, maxBathrooms, onChange }) => {
+  return (
+    <div className="rooms-dropdown">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-lg font-semibold abi">Rooms</h3>
       </div>
-    ))}
-  </div>
-);
+      {["Bedrooms", "Bathrooms"].map((label, idx) => (
+        <div key={label} className="mb-4">
+          <label className="block font-medium mb-2">{label}</label>
+          <div className="flex gap-2">
+            <select
+              value={idx === 0 ? minrooms : minBathrooms}
+              onChange={(e) => onChange(idx === 0 ? "minrooms" : "minBathrooms", e.target.value)}
+              className="w-full p-2 border rounded"
+            >
+              <option value="">No min</option>
+              {[...Array(6)].map((_, i) => (
+                <option key={i} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+            <span className="mx-1">-</span>
+            <select
+              value={idx === 0 ? maxrooms : maxBathrooms}
+              onChange={(e) => onChange(idx === 0 ? "maxrooms" : "maxBathrooms", e.target.value)}
+              className="w-full p-2 border rounded"
+            >
+              <option value="">No max</option>
+              {[...Array(6)].map((_, i) => (
+                <option key={i} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const PriceHistogram = ({ min, max, minValue, maxValue, onChange }) => {
   const bars = 30;
@@ -339,7 +342,7 @@ const Properties = () => {
       <div className="flex flex-wrap items-center gap-2 sm:gap-4">
   {/* Search Input Container */}
   <div className="relative w-full sm:w-auto flex-grow">
-    <div className="flex items-center rounded-full shadow-sm overflow-hidden border border-gray-300 bg-white">
+    <div className="flex items-center rounded-full shadow-sm overflow-hidden">
       <SearchInput
         selectedAddress={setSelectedAddress}
         setCoordinates={setCoordinates}

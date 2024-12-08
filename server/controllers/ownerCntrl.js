@@ -23,6 +23,20 @@ export const createOwner = asyncHandler(async (req, res) => {
   } else res.status(201).send({ message: "Owner already registered" });
 });
 
+export const deleteOwner = async (req, res) => {
+
+  const { id } = req.params;
+
+  try {
+    await prisma.owner.delete({
+      where: { id: id }
+    })
+    res.status(200).json({ message: "Owner deleted successfully" })
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get Onwer" })
+  }
+}
 
 export const createOwnerByAgent = asyncHandler(async (req, res) => {
   console.log("creating a Owner");
@@ -45,8 +59,8 @@ export const createOwnerByAgent = asyncHandler(async (req, res) => {
 
 
 export const userToOwner = asyncHandler(async (req, res) => {
-  const { username, email, governmentId, teleNumber } = req.body;
-  console.log(username, email, governmentId, teleNumber);
+  const { username, email, governmentId, teleNumber ,profile} = req.body;
+  console.log(username, email, governmentId, teleNumber , profile);
   // delete user
   const userExists = await prisma.user.findUnique({
     where: { email },
@@ -67,6 +81,7 @@ export const userToOwner = asyncHandler(async (req, res) => {
         username: username,
         governmentId: governmentId,
         teleNumber: teleNumber,
+        image:profile,
       },
     });
     res.json({
@@ -125,15 +140,7 @@ export const logout = (req, res) => {
   res.clearCookie("token").status(200).json({ message: "Logout Successful" });
 };
 
-export const getowners = async (req, res) => {
-  try {
-    const owners = await prisma.owner.findMany();
-    res.status(200).json(owners);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Failed to get Users" });
-  }
-};
+ 
 
 export const getowner = async (req, res) => {
   const { id } = req.params;
@@ -149,34 +156,36 @@ export const getowner = async (req, res) => {
 };
 
 export const updateowner = async (req, res) => {
-  const { id } = req.params;
-  const tokenownerId = req.ownerId;
-  const { password, avatar, ...inputs } = req.body;
-  if (id !== tokenownerId) {
+  const { ownerData } = req.params;
+   const { image, email, teleNumber } = req.body; // Extract allowed fields
+
+  if (ownerData) {
     return res
       .status(403)
       .json({ message: "You do not have permission to update this" });
   }
-  let updatedPassword = null;
+
   try {
-    if (password) {
-      updatedPassword = await bcrypt.hash(password, 10);
-    }
-    const updatedowner = await prisma.owner.update({
-      where: { id: id },
+    // Update only the allowed fields
+    const updatedOwner = await prisma.owner.update({
+      where: { email: email },
       data: {
-        ...inputs,
-        ...(updatedPassword && { password: updatedPassword }),
-        ...(avatar && { avatar }),
+        ...(image && { image }),
+        ...(email && { email }),
+        ...(teleNumber && { teleNumber }),
       },
     });
-    const { password: ownerPassword, ...rest } = updatedowner;
-    res.status(200).json(rest);
+
+    res.status(200).json(updatedOwner);
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Failed to get Users" });
+    console.error(err);
+    res.status(500).json({ message: "Failed to update owner details" });
   }
 };
+
+
+
+
 
 export const deleteowner = async (req, res) => {
   const { id } = req.params;
@@ -236,3 +245,17 @@ export const profilePosts = async (req, res) => {
     res.status(500).json({ message: "Failed to get Profile Post" });
   }
 };
+
+export const getAllOwners = asyncHandler(async (req, res) => {
+  try {
+    const { email } = req.query; // Retrieve email from query parameters if provided
+
+    const owners = await prisma.owner.findMany({
+      where: email ? { email } : {}, // Filter by email if provided, otherwise return all
+    });
+
+    res.json(owners); // Return the retrieved owners
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // Handle errors properly
+  }
+});

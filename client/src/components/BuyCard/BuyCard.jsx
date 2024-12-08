@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaBath } from "react-icons/fa";
-import { FiHeart, FiGlobe } from "react-icons/fi";
+import { FiGlobe } from "react-icons/fi";
 import { MdHouse, } from "react-icons/md";
  
 const Buycard = ({ card }) => {
@@ -47,12 +47,7 @@ const Buycard = ({ card }) => {
         </span>
 
         {/* Heart Icon */}
-        <button
-          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md text-red-500"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <FiHeart size={18} />
-        </button>
+         
       </div>
 
       {/* Property Details */}

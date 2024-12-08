@@ -1,4 +1,4 @@
-.properties-container{
+/* .properties-container{
     gap: 2rem;
 }
 .properties-container .search-bar{
@@ -17,4 +17,54 @@
 .properties-container .search-bar input{
     width: 70%;
 }
+ */
 
+
+
+ .rooms-dropdown {
+    position: absolute;
+    margin-top: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 18rem;
+    padding: 1rem;
+    margin-left: -11rem;
+  }
+ 
+  
+  @media (max-width: 424px) {
+    .rooms-dropdown {
+        margin-left: 3px;
+     }
+  }
+  
+  
+  
+  @media (max-width: 1024px) {
+    .search {
+
+        width: 100%;
+
+     }
+  }
+  
+  @media (max-width: 768px) {
+    .search {
+        background: yellow;
+        width: 100%;
+
+     }  }
+  
+  @media (max-width: 376px) {
+   
+    .search {
+        width: 370px;
+        padding: 0px 20px 0px 0px;
+        margin-right: 10px !important;
+    }
+  }
+  
+
+  

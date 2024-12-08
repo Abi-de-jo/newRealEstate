@@ -32,6 +32,7 @@
     "aos": "^2.3.4",
     "assert": "^2.1.0",
     "axios": "^1.7.7",
+    "browser-image-compression": "^2.0.2",
     "browserify-zlib": "^0.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

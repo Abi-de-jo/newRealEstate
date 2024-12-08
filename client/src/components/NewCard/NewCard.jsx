@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaBath } from "react-icons/fa";
-import { FiHeart, FiGlobe } from "react-icons/fi";
-import { MdHouse } from "react-icons/md";
+import { MdOutlineBed, MdOutlineSquareFoot } from "react-icons/md";
+import { FiGlobe } from "react-icons/fi";
 
 // Helper function to calculate time difference
 const getTimeDifference = (updatedAt) => {
@@ -17,14 +17,11 @@ const getTimeDifference = (updatedAt) => {
     const diffInDays = Math.floor(diffInHours / 24);
     return diffInDays === 1 ? "1 day ago" : `${diffInDays} days ago`;
   } else if (diffInHours > 0) {
-    return diffInHours === 1 ? "1hr ago" : `${diffInHours}hrs ago`;
+    return diffInHours === 1 ? "1 hour ago" : `${diffInHours} hours ago`;
   } else if (diffInMinutes > 0) {
-    const remainingSeconds = diffInSeconds % 60;
-    return remainingSeconds === 0
-      ? `${diffInMinutes}mins ago`
-      : `${diffInMinutes}mins ${remainingSeconds}secs ago`;
+    return diffInMinutes === 1 ? "1 minute ago" : `${diffInMinutes} minutes ago`;
   } else {
-    return diffInSeconds === 1 ? "1sec ago" : `${diffInSeconds}secs ago`;
+    return diffInSeconds === 1 ? "1 second ago" : `${diffInSeconds} seconds ago`;
   }
 };
 
@@ -32,21 +29,20 @@ const NewCard = ({ card }) => {
   const navigate = useNavigate();
   const [timeDifference, setTimeDifference] = useState(getTimeDifference(card.updatedAt));
 
-  // Update the time difference every second
+  // Update the time difference every minute
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeDifference(getTimeDifference(card.updatedAt));
-    }, 1000);
+    }, 60000); // Update every 1 minute
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [card.updatedAt]);
 
   return (
     <div
-      className="flex flex-col w-full h-[350px] items-start bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer border hover:shadow-xl transition-shadow"
+      className="flex flex-col w-full h-[350px] bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
       onClick={() => navigate(`../properties/${card.id}`)}
     >
-      {/* Image Section with Overlay and Automatic Fade Animation on Hover */}
       <div className="relative w-full h-72 overflow-hidden group">
         {card.images.map((image, index) => (
           <img
@@ -83,34 +79,28 @@ const NewCard = ({ card }) => {
         </span>
 
         {/* Heart Icon */}
-        <button
-          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md text-red-500"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <FiHeart size={18} />
-        </button>
+         
       </div>
 
       {/* Property Details */}
-      <div className="p-4 w-full">
-        <span className="text-green-600 text-sm font-medium">
-          {card.propertyType}
-        </span>
-        <div className="text-2xl font-bold text-gray-900 mt-1">
-          ${card.price}
-        </div>
-        <div className="flex items-center text-gray-700 text-sm mt-2 space-x-3">
+      <div className="p-4">
+        <h2 className="text-lg font-semibold text-gray-800 truncate">{card.title}</h2>
+        <p className="text-green-600 text-sm">{card.propertyType}</p>
+        <div className="text-2xl font-bold text-gray-900 mt-2">${card.price}</div>
+        <div className="flex items-center text-gray-600 text-sm mt-2 space-x-4">
           <span className="flex items-center">
-            <FaBath className="mr-1" />
-            <span className="text-black">{card.bathrooms} &nbsp;</span> Bath
+            <MdOutlineBed className="text-gray-500 mr-1" />
+            {card.rooms} Beds
           </span>
           <span className="flex items-center">
-            <MdHouse className="mr-1" />
-            <span className="text-black">{card.rooms} &nbsp;</span> Bed
+            <FaBath className="text-gray-500 mr-1" />
+            {card.bathrooms} Baths
           </span>
-          <span className="text-black">{card.area} &nbsp;</span> Sqft
+          <span className="flex items-center">
+            <MdOutlineSquareFoot className="text-gray-500 mr-1" />
+            {card.area} Sqft
+          </span>
         </div>
-        <div className="text-gray-600 text-sm mt-2">{card.title}</div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import express from "express";
-import { login, logout, createOwner ,userToOwner, checkOwner, getowner, getowners, createOwnerByAgent, deleteowner } from "../controllers/ownerCntrl.js";
+import { login, logout, createOwner ,userToOwner, checkOwner, getowner, createOwnerByAgent, deleteowner, getAllOwners, updateowner } from "../controllers/ownerCntrl.js";
 // import jwtCheck from "../config/auth0Config.js";
 
 
@@ -13,9 +13,10 @@ router.post("/userToOwner", userToOwner);
 router.post("/checkOwner", checkOwner);
 router.post("/login", login);
 router.post("/logout", logout);
-router.get("/allOwners", getowners);
-
-router.post("/get", getowner);
+ 
+router.get("/get", getowner);
+router.get("/getOwner", getAllOwners);
+router.put("/update/:id", updateowner);
 
 
 export {router as ownerRoute}

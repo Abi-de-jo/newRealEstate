@@ -43,7 +43,7 @@ const PropertyCard = ({ card }) => {
       if (isLikedFromServer) {
         console.log(`User liked this property: ${card.id}`);
       } else {
-        console.log(`User has not liked this property: ${card.id}`);
+        // console.log(`User has not liked this property: ${card.id}`);
       }
       // Update localStorage to match server data
       localStorage.setItem("likedProperties", JSON.stringify(likedProperties));
@@ -67,7 +67,7 @@ const PropertyCard = ({ card }) => {
   
         console.log("PROPERTY DISLIKED");
       } catch (error) {
-        console.error("Error while removing like", error);
+        // console.error("Error while removing like", error);
       }
     } else {
       // If it's not liked, send a request to add the like
@@ -95,34 +95,36 @@ const PropertyCard = ({ card }) => {
     >
       {/* Image Section with Overlay and Automatic Fade Animation on Hover */}
       <div className="relative w-full h-72 overflow-hidden group">
-        {card.images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="property"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-              index === 0
-                ? "opacity-100 group-hover:opacity-0" // Default image visible, fades out on hover
-                : "opacity-0 group-hover:opacity-100" // Other images fade in on hover
-            }`}
-            style={{
-              transitionDelay: `${index * 1}s`, // Stagger fade-in effect based on index
-            }}
-          />
-        ))}
-        {card.video && (
-          <video
-            src={card.video}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0 group-hover:opacity-100"
-            loop
-            autoPlay
-            muted // Ensures the video plays automatically without requiring user interaction
-            playsInline // Optimizes playback for mobile devices
-            style={{
-              transitionDelay: `${card.images.length * 1}s`, // Delay based on number of images
-            }}
-          />
-        )}
+      {card.images.map((image, index) => (
+  <img
+    key={index}
+    src={image}
+    alt="property"
+    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+      index === 0
+        ? "opacity-100 group-hover:opacity-0" // Default image visible, fades out on hover
+        : "opacity-0 group-hover:opacity-100" // Other images fade in on hover
+    }`}
+    style={{
+      transitionDelay: `${index * 1}s`, // Stagger fade-in effect based on index
+    }}
+  />
+))}
+
+{card.video && (
+  <video
+    src={card.video}
+    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0 group-hover:opacity-100"
+    loop
+    autoPlay
+    muted // Ensures the video plays automatically without requiring user interaction
+    playsInline // Optimizes playback for mobile devices
+    style={{
+      transitionDelay: `${card.images.length}s`, // Video starts after all images
+    }}
+  />
+)}
+
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
 

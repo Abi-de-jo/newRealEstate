@@ -3,7 +3,7 @@ import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-goo
 import { MdLocationOn } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
-
+import "./search.css"
 function Search({ selectedAddress, setCoordinates }) {
   const [inputValue, setInputValue] = useState(null);
   const { t } = useTranslation('search'); // Initialize translation function
@@ -27,32 +27,36 @@ function Search({ selectedAddress, setCoordinates }) {
   return (
     <div className="relative">
       <div
-        className="flex p-[1px] items-center rounded-full shadow-lg overflow-hidden
-                   "
-        style={{ minWidth: '45px', maxWidth: '100%', overflowX: 'hidden' }}
-      >
-        <GooglePlacesAutocomplete 
+        className="flex p-[1px] items-center rounded-full shadow-lg overflow-hidden abii"
+        style={{ minWidth: '45px', maxWidth: '100%', overflowX: 'hidden' }}>
+        <GooglePlacesAutocomplete
 
-         
+
           selectProps={{
             value: inputValue,
             onChange: handlePlaceChange,
             placeholder: t("placeholder"),
             isClearable: true,
+ 
             styles: {
-              control: (provided) => ({
-                ...provided,
-                borderRadius: '999px',
-                overflow: 'hidden',
-                boxShadow: 'none',
-                paddingLeft: "20px",
-                padding: "10px",
-                outline: "none",
-                minWidth: "310px",
-                maxWidth: "100px", // Ensure the input stays within the container
-                whiteSpace: "nowrap", // Prevent text wrapping
-                textOverflow: "ellipsis", // Show ellipsis for overflowing text
-               }),
+              control: (provided) => {
+                const isMobile = window.innerWidth >= 426; // Adjust this breakpoint as per your needs
+              
+                return {
+                  ...provided,
+                  borderRadius: '999px',
+                  overflow: 'hidden',
+                  boxShadow: 'none',
+                  paddingLeft: "20px",
+                  padding: "10px",
+                  outline: "none",
+                  minWidth: !isMobile ? "310px" : "310px", // Change minWidth for mobile
+                  maxWidth: !isMobile ? "200px" : "310px", // Adjust maxWidth for mobile
+                   textOverflow: !isMobile ? "clip" : "ellipsis", // Remove ellipsis for mobile
+                  fontSize: !isMobile ? "12px" : "14px", // Adjust font size for mobile
+                };
+              },
+              
               indicatorSeparator: () => ({ display: 'none' }),
               dropdownIndicator: () => ({ display: 'none' }),
               placeholder: (provided) => ({

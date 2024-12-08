@@ -1,13 +1,32 @@
+import axios from "axios";
 import { Mail, MoreVertical, Trash, User } from "lucide-react"; // Import necessary icons
 import { Link } from "react-router-dom";
 
 const AgentCard = ({ id, name, image, email, phone, username, governmentId }) => {
+  const API_BASE_URL = "http://localhost:3000/api/admin";
+
+
+  
+  const handleDelete = async (action) => {
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/${action}/${id}`);
+      console.log(`${action}:`, response.data);
+      
+    } catch (error) {
+      console.error(`Error ${action.toLowerCase()} post:`, error);
+    }
+  };
   
 
-  const handleDelete = () => {
-    console.log("Deleted");
-  };
+ 
 
+  
+ 
+
+
+  // const handleDelete = () => {
+  //   console.log("Deleted");
+  // };
   const click =()=>{
 
     localStorage.removeItem("newuser")
@@ -46,7 +65,7 @@ const AgentCard = ({ id, name, image, email, phone, username, governmentId }) =>
         <button
            className="rounded-full p-1 text-red-600 hover:bg-red-100 hover:text-red-800"
            aria-label="Delete"
-           onClick={handleDelete}  >
+           onClick={()=>{handleDelete('delete')}}  >
           <Trash className="h-4 w-4" />
         </button>
 

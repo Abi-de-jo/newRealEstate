@@ -26,22 +26,7 @@ const ResCard = ({ card }) => {
     return () => clearInterval(interval);
   }, [card.images.length]);
 
-  const handleLikeClick = (e) => {
-    e.stopPropagation();
-    const likedProperties = JSON.parse(localStorage.getItem("likedProperties")) || [];
-
-    if (isLiked) {
-      const updatedLikes = likedProperties.filter((id) => id !== card.id);
-      localStorage.setItem("likedProperties", JSON.stringify(updatedLikes));
-    } else {
-      likedProperties.push(card.id);
-      localStorage.setItem("likedProperties", JSON.stringify(likedProperties));
-    }
-
-    setIsLiked(!isLiked);
-  };
-
-  if (!isVisible) return null;
+ 
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -60,7 +45,7 @@ const ResCard = ({ card }) => {
 
   return (
     <div
-      className="flex flex-col items-start cursor-pointer bg-white rounded-lg shadow-lg shadow-gray-400/50 transform transition-all duration-300 hover:shadow-md hover:translate-y-1"
+      className="flex flex-col items-start cursor-pointer bg-white rounded-lg shadow-lg shadow-gray-400/50 transform transition-all duration-300 hover:shadow-md"
       onClick={() => navigate(`../residencies/${card.id}`)}
     >
       {/* Carousel Section */}
@@ -102,12 +87,7 @@ const ResCard = ({ card }) => {
 
         {/* Top Actions */}
         <div className="absolute right-3 top-3 flex gap-2">
-          <button
-            className="rounded-full bg-white/90 p-1.5 shadow-sm hover:bg-white"
-            onClick={handleLikeClick}
-          >
-            <Heart className={`h-4 w-4 ${isLiked ? "text-red-500 fill-current" : ""}`} />
-          </button>
+         
           <button
             className="rounded-full bg-white/90 p-1.5 shadow-sm hover:bg-white"
             onClick={(e) => {

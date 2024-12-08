@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaBath } from "react-icons/fa";
 import { FiGlobe } from "react-icons/fi";
 import { MdHouse } from "react-icons/md";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-
+ 
 // Helper function to calculate time difference
 const getTimeDifference = (updatedAt) => {
   const now = new Date();
@@ -94,15 +93,7 @@ const NewCard = ({ card }) => {
           <FiGlobe className="text-gray-600" />
         </span>
 
-        {/* Heart Icon */}
-        <button
-          className={`absolute top-3 right-3 bg-white p-2 rounded-full shadow-md transition-transform duration-300 ${
-            isLiked ? "scale-110 text-red-500" : "text-gray-500"
-          } hover:scale-125`}
-          onClick={handleLikeClick}
-        >
-          {isLiked ? <AiFillHeart size={18} /> : <AiOutlineHeart size={18} />}
-        </button>
+         
       </div>
 
       {/* Property Details */}

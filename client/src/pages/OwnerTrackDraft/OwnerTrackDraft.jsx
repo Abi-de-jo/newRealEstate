@@ -2,10 +2,10 @@ import React from "react";
 import useOwnerTrack from "../../hooks/useOwnerTrack";
 import PuffLoader from "react-spinners/PuffLoader";
   import OwnerTrackCard from "../../components/OwnerTrackCard/OwnerTrackCard";
-
+ 
 const OwnerTrackDraft = () => {
   const { data, isError, isLoading } = useOwnerTrack();
-  console.log(data,"jjjjjjjjjjjjjjjjjjjjjjjj")
+ 
 
   if (isError) {
     return (

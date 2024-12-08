@@ -56,6 +56,8 @@ import { LikeId } from "./pages/LikesId/LikesId";
 import ResProfile from "./components/admin/ResProfile";
 import AdminLogin from "./pages/admin/adminlogin";
 import Home from "./pages/Home";
+import AdminHeader from "./components/AdminHeader";
+import AgentHeder from "./components/AgentHeder";
   function App() {
   const queryClient = new QueryClient();
 
@@ -85,6 +87,8 @@ import Home from "./pages/Home";
 
 
                 {/* Common properties route for all roles */}
+                <Route path="/agent/agentlogin/agentbutton/secret" element={<AgentHeder/>} />
+                <Route path="/admin/adminlogin/adminbutton/secret" element={<AdminHeader/>} />
                 <Route path="/properties" element={<Properties />} />
                 <Route path="/buy" element={<Buy />} />
                 <Route path="/rent" element={<Rent />} />

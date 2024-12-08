@@ -114,25 +114,56 @@ export const updateAgent = async (req, res) => {
         res.status(500).json({message: "Failed to get Agents"})
     }
 }
+// export const deleteAgent = async (req, res) => {
+
+//     const {id} = req.params; 
+//     const tokenAgentId = req.agentId;
+//     if (id !== tokenAgentId) {
+//         return res.status(403).json({ message: "You do not have permission to update this"})
+//     }
+
+
+//     try {
+//         await prisma.agent.delete({
+//             where: {id: id}
+//         })
+//         res.status(200).json({message: "Agent deleted successfully"})
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json({message: "Failed to get Users"})
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const deleteAgent = async (req, res) => {
 
-    const {id} = req.params; 
-    const tokenAgentId = req.agentId;
-    if (id !== tokenAgentId) {
-        return res.status(403).json({ message: "You do not have permission to update this"})
-    }
+  const { id } = req.params;
 
-
-    try {
-        await prisma.agent.delete({
-            where: {id: id}
-        })
-        res.status(200).json({message: "Agent deleted successfully"})
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({message: "Failed to get Users"})
-    }
+  try {
+    await prisma.agent.delete({
+      where: { id: id }
+    })
+    res.status(200).json({ message: "Agent deleted successfully" })
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get Agent" })
+  }
 }
+
+
 export const profilePosts = async (req, res) => {
     const tokenAgentId = req.params.agentId; 
     try {
@@ -154,4 +185,40 @@ export const profilePosts = async (req, res) => {
     }
 }
 
+export const getAllAgents = asyncHandler(async (req, res) => {
+  try {
+    const { email } = req.query; // Retrieve email from query parameters if provided
 
+    const owners = await prisma.agent.findMany({
+      where: email ? { email } : {}, // Filter by email if provided, otherwise return all
+    });
+
+    res.json(owners); // Return the retrieved owners
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // Handle errors properly
+  }
+});
+
+export const updateagent = async (req, res) => {
+  const { email, image, teleNumber } = req.body; // Extract fields from the request body
+
+  if (!email) {
+    return res.status(400).json({ message: "Email is required" }); // Validate email presence
+  }
+
+  try {
+    // Update only the allowed fields
+    const updatedAgent = await prisma.agent.update({
+      where: { email }, // Update based on email
+      data: {
+        ...(image && { image }), // Update image if provided
+        ...(teleNumber && { teleNumber }), // Update phone number if provided
+      },
+    });
+
+    res.status(200).json({ message: "Agent updated successfully", updatedAgent });
+  } catch (err) {
+    console.error("Error updating agent:", err);
+    res.status(500).json({ message: "Failed to update agent details" });
+  }
+};

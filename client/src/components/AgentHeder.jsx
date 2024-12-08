@@ -1,16 +1,15 @@
+ 
+
 import React, { useState, useEffect, useMemo } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiHeart, FiUser } from "react-icons/fi";
 import OutsideClickHandler from "react-outside-click-handler";
-import AddPropertyModal from "../AddPropertyModal/AddPropertyModal";
-import { useAuth0 } from "@auth0/auth0-react";
+ import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../../LanguageSwitcher";
-import { FaBars } from "react-icons/fa";
-
-function Header() {
+ import AddPropertyModal from "./AddPropertyModal/AddPropertyModal";
+ function AgentHeder() {
   const { t } = useTranslation("header");
   const navigate = useNavigate();
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
@@ -20,8 +19,7 @@ function Header() {
   const [profileDropdown, setProfileDropdown] = useState(false);
 
   const [role, setRole] = useState(localStorage.getItem("role") || "");
-  const adminEmail = localStorage.getItem("adminEmail");
-
+ 
   useEffect(() => {
     if (role) {
       localStorage.setItem("role", role);
@@ -41,8 +39,9 @@ function Header() {
     loginWithRedirect();
   };
 
- 
-   
+  
+
+  
 
   const handleProfileClick = () => {
     navigate(role === "admin" ? "/admin" : "/profile");
@@ -100,20 +99,18 @@ function Header() {
             >
               {t("profile")}
             </button>
-            <button
-                        className="block w-full text-left p-4 border-b font-medium hover:bg-gray-100"
-                        onClick={() => {
-                         
-                            logout({ returnTo: window.location.origin });
-                            localStorage.clear()
-
-                           
-                        }}
-                      >
-                        {t("logout")}
-                      </button>
             <div className="p-2">
-              
+              <button
+                className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                onClick={() => {
+    
+                    logout({ returnTo: window.location.origin ,});
+                    localStorage.clear()
+                  
+                }}
+              >
+                {t("logout")}
+              </button>
             </div>
           </div>
         )}
@@ -138,15 +135,15 @@ function Header() {
               </button>
             </Link>
           )}
-          {!isAuthenticated && !adminEmail ? (
+          {!isAuthenticated ? (
             <div className="flex items-center space-x-2">
-             
               <button
-                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
-                onClick={() => handleLoginRedirect("user")}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+                onClick={() => handleLoginRedirect("agent")}
               >
-                {t("user")}
+                {t("agent")}
               </button>
+              
               
             </div>
           ) : (
@@ -154,8 +151,8 @@ function Header() {
           )}
         </div>
 
-        <div className="text-black lg:hidden cursor-pointer ml-52" onClick={() => setOpen((prev) => !prev)}>
-        <FaBars size={24} />
+        <div className="text-gray-700 lg:hidden cursor-pointer" onClick={() => setOpen((prev) => !prev)}>
+          <BiMenuAltRight size={24} />
         </div>
 
         {open && (
@@ -176,14 +173,13 @@ function Header() {
                       </button>
                     </Link>
                   )}
-                  {!isAuthenticated && !adminEmail ? (
+                  {!isAuthenticated ? (
                     <div className="flex flex-col space-y-2">
-                       
                       <button
-                        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
-                        onClick={() => handleLoginRedirect("user")}
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+                        onClick={() => handleLoginRedirect("agent")}
                       >
-                        {t("user")}
+                        {t("agent")}
                       </button>
                       
                     </div>
@@ -198,11 +194,11 @@ function Header() {
                       <button
                         className="w-full text-left p-2 text-gray-800 hover:bg-gray-100"
                         onClick={() => {
-                         
+                          
                             logout({ returnTo: window.location.origin });
                             localStorage.clear()
 
-                           
+                         
                         }}
                       >
                         {t("logout")}
@@ -215,12 +211,11 @@ function Header() {
           </div>
         )}
 
-        <LanguageSwitcher />
+      
         <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
       </div>
     </header>
   );
 }
 
-export default Header;
-
+export default AgentHeder;
