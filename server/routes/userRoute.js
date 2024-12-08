@@ -7,7 +7,7 @@ router.post("/bookVisit/:id", bookVisit);
 router.post("/likes/:propertyId", likes);
  router.delete("/dislikes/:propertyId",dislikes)
 
-router.post("/register",jwtCheck, createUser );
+router.post("/register",createUser );
 router.post("/allBookings", allBookings);
 router.post("/allLikes", allLikes);
 router.post("/cancelBooking/:id", cancelBooking);
