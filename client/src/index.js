@@ -14,11 +14,11 @@ root.render(
   <React.StrictMode>
     <Auth0Provider
       domain="dev-gnfk5ecv4ujqa6nn.eu.auth0.com"
-      clientId="6U6b1LXmSXdC8e0lkF80zA4TVmgM5umf"
+      clientId="dlyAjNpwii4Dni4frS7BxqHDxYvifNqk"
       authorizationParams={{
-        redirect_uri: "http://localhost:5173",
+        redirect_uri: "https://new-real-estate-client.vercel.app",
       }}
-      audience="http://localhost:3000"
+      audience="https://new-real-estate-server.vercel.app"
       scope="openid profile email"
     >
       <MantineProvider withGlobalStyles withNormalizeCSS>

@@ -67,7 +67,7 @@ function UserLogin({ nextStep, prevStep }) {
     const profile = previewImage;
 
     try {
-      const res = await axios.post("http://localhost:3000/api/owner/userToOwner", {
+      const res = await axios.post("https://new-real-estate-server.vercel.app/api/owner/userToOwner", {
         username,
         teleNumber,
         governmentId,

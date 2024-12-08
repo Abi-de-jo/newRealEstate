@@ -42,7 +42,7 @@ function Neighborhood({ address, city, country }) {
 
     for (const type of selectedNearbyTypes) {
       try {
-        const response = await axios.get("http://localhost:3000/api/nearby-places", {
+        const response = await axios.get("https://new-real-estate-server.vercel.app/api/nearby-places", {
           params: {
             lat,
             lng,

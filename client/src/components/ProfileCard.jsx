@@ -67,7 +67,7 @@ function ProfileCard({ username, email, governmentId }) {
       setTeleNumber(newTeleNumber);
       localStorage.setItem(generateKey("teleNumber"), newTeleNumber);
       if (role === "agent") {
-        axios.post("http://localhost:3000/api/agent/update", {
+        axios.post("https://new-real-estate-server.vercel.app/api/agent/update", {
           newTeleNumber,
           email,
         });

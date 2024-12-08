@@ -185,7 +185,7 @@ const navigate = useNavigate();
 
                
                   try {
-                    const response = await axios.put(`http://localhost:3000/api/residency/accept/${data.id}`,{email:storedUser});
+                    const response = await axios.put(`https://new-real-estate-server.vercel.app/api/residency/accept/${data.id}`,{email:storedUser});
                     console.log('Post accepted:', response.data);
                   } catch (error) {
                     console.error('Error accepting post:', error);

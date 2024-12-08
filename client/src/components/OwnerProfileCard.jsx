@@ -8,7 +8,7 @@ function OwnerProfileCard() {
   const [profilePic, setProfilePic] = useState(null);
   const { data: owners } = useOwner();
   const owneremail = localStorage.getItem("email");
-  const API_BASE_URL = "http://localhost:3000/api/owner";
+  const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/owner";
 
   // Find the matching owner data based on email
   useEffect(() => {

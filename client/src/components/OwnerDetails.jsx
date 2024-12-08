@@ -41,7 +41,7 @@ const OwnerDetails = ({
       }));
 
       try {
-        await axios.post(`http://localhost:3000/api/owner/registerbyAgent`, {
+        await axios.post(`https://new-real-estate-server.vercel.app/api/owner/registerbyAgent`, {
           ownerEmail,
           ownerName,
           ownerNumber,

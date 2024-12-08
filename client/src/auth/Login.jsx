@@ -18,7 +18,7 @@ const Login = () => {
 
  
     try{
-        const res = await axios.post("http://localhost:3000/api/agent/login",{
+        const res = await axios.post("https://new-real-estate-server.vercel.app/api/agent/login",{
             email,password
         })
 

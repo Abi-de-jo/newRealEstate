@@ -45,7 +45,7 @@ const OwnerRegister = () => {
     console.log(username, email, password, fullMobile);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/owner/register", {
+      const res = await axios.post("https://new-real-estate-server.vercel.app/api/owner/register", {
         username, email, password, mobile: fullMobile, Gov
       });
 

@@ -60,7 +60,7 @@ function MapRight({ properties, selectedLocation, onSelectProperty }) {
     await Promise.all(
       selectedNearbyTypes.map(async (type) => {
         try {
-          const response = await axios.get("http://localhost:3000/api/nearby-places", {
+          const response = await axios.get("https://new-real-estate-server.vercel.app/api/nearby-places", {
             params: { lat, lng, type },
           });
           if (response.data.status === "OK") {

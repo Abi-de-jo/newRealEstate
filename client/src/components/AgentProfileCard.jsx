@@ -10,7 +10,7 @@ function AgentProfileCard() {
   const [newTeleNumber, setNewTeleNumber] = useState("");
   const { data: agents } = useAgents();
   const agentEmail = localStorage.getItem("email"); // Get agent email from localStorage
-  const API_BASE_URL = "http://localhost:3000/api/agent";
+  const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/agent";
 
   // Find the agent data based on email
   useEffect(() => {

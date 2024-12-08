@@ -61,7 +61,7 @@ const PropertyCard = ({ card }) => {
     if (isLiked) {
       // If it's already liked, send a request to remove the like
       try {
-        await axios.delete(`http://localhost:3000/api/user/dislikes/${PropertyId}`, {
+        await axios.delete(`https://new-real-estate-server.vercel.app/api/user/dislikes/${PropertyId}`, {
           data: { likedUserEmail }, // Pass user email in request body
         });
   
@@ -72,7 +72,7 @@ const PropertyCard = ({ card }) => {
     } else {
       // If it's not liked, send a request to add the like
       try {
-        await axios.post(`http://localhost:3000/api/user/likes/${PropertyId}`, {
+        await axios.post(`https://new-real-estate-server.vercel.app/api/user/likes/${PropertyId}`, {
           likedUserEmail,
         });
   

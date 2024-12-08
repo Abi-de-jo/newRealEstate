@@ -169,7 +169,7 @@ bot.start((ctx) => {
   return ctx.replyWithMarkdown(welcomeMessage, {
     reply_markup: {
       inline_keyboard: [
-        [{ text: "👉 Open Application", web_app: { url: "https://real-estate-frag.vercel.app" } }],
+        [{ text: "👉 Open Application", web_app: { url: "https://new-real-estate-client.vercel.app" } }],
         [{ text: "📝 Post an Ad", callback_data: "post_ad" }],
         [{ text: "📨 Enable Notifications", callback_data: "enable_notifications" }],
         [{ text: "🏠 All Properties", callback_data: "all_properties" }],

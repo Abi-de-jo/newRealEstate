@@ -14,7 +14,7 @@ import { Modal } from "@mantine/core";
 import axios from "axios";
 
 
-const API_BASE_URL = "http://localhost:3000/api/residency";
+const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/residency";
 
 export const AdminAgentPubId = () => {
   const navigate = useNavigate();

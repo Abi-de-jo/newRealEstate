@@ -63,7 +63,7 @@ export default function Dashboard() {
       };
 
       try {
-        const response = await axios.post('http://localhost:3000/api/agent/register', newAgent);
+        const response = await axios.post('https://new-real-estate-server.vercel.app/api/agent/register', newAgent);
         alert('Agent created successfully!');
         setAgentsData((prevData) => [...prevData, response.data]);
         setIsNewAgentModalOpen(false);
@@ -90,7 +90,7 @@ export default function Dashboard() {
       };
 
       try {
-        const response = await axios.post('http://localhost:3000/api/owner/register', newOwner);
+        const response = await axios.post('https://new-real-estate-server.vercel.app/api/owner/register', newOwner);
         alert('Owner created successfully!');
         setOwnersData((prevData) => [...prevData, response.data]);
         setIsNewOwnerModalOpen(false);

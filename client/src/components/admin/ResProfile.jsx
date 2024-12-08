@@ -13,7 +13,7 @@ import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const API_BASE_URL = "http://localhost:3000/api/residency";
+const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/residency";
 
 function ResProfile() {
   const { id } = useParams();

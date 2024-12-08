@@ -114,7 +114,7 @@ export const DraftId = () => {
     }
 
     try {
-      await axios.put(`http://localhost:3000/api/residency/accept/${data?.id}`, { email });
+      await axios.put(`https://new-real-estate-server.vercel.app/api/residency/accept/${data?.id}`, { email });
 
       const newCount = acceptCount + 1;
       setAcceptCount(newCount);
@@ -139,7 +139,7 @@ export const DraftId = () => {
     }
 
     try {
-      await axios.put(`http://localhost:3000/api/admin/acceptByAdmin/${data?.id}`, { email });
+      await axios.put(`https://new-real-estate-server.vercel.app/api/admin/acceptByAdmin/${data?.id}`, { email });
       navigate("/draft");
     } catch (error) {
       console.error("Error accepting post:", error);
@@ -153,7 +153,7 @@ export const DraftId = () => {
     }
 
     try {
-      await axios.post(`http://localhost:3000/api/admin/forwardAgent/${data?.id}`, { email: selectedAgent });
+      await axios.post(`https://new-real-estate-server.vercel.app/api/admin/forwardAgent/${data?.id}`, { email: selectedAgent });
       alert("Successfully forwarded to agent.");
       setAgentModalOpened(false);
     } catch (error) {

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import dayjs from "dayjs";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://new-real-estate-server.vercel.app/api",
 });
 
 
@@ -372,7 +372,7 @@ export const createUser = async (email, token) => {
     throw err;
   }
 };
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "https://new-real-estate-server.vercel.app";
 
 export const createAdmin = async (email, username, password) => {
   try {

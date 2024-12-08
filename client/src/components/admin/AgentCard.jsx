@@ -3,7 +3,7 @@ import { Mail, MoreVertical, Trash, User } from "lucide-react"; // Import necess
 import { Link } from "react-router-dom";
 
 const AgentCard = ({ id, name, image, email, phone, username, governmentId }) => {
-  const API_BASE_URL = "http://localhost:3000/api/admin";
+  const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/admin";
 
 
   

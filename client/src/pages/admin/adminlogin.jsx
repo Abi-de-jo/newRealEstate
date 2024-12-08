@@ -34,7 +34,7 @@ function AdminLogin() {
 
   const createAdmin = async (email, username, password) => {
     try {
-      const response = await axios.post(`http://localhost:3000/api/admin/register`, {
+      const response = await axios.post(`https://new-real-estate-server.vercel.app/api/admin/register`, {
         email,
         username,
         password,
@@ -79,7 +79,7 @@ function AdminLogin() {
     const { email, password } = loginDetails;
   
     try {
-      const response = await axios.post(`http://localhost:3000/api/admin/login`, {
+      const response = await axios.post(`https://new-real-estate-server.vercel.app/api/admin/login`, {
         email,
         password,
       });

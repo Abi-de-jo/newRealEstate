@@ -184,7 +184,7 @@ export const UseFavId = () => {
 
                
                   try {
-                    const response = await axios.put(`http://localhost:3000/api/residency/publish/${data.id}`);
+                    const response = await axios.put(`https://new-real-estate-server.vercel.app/api/residency/publish/${data.id}`);
                     console.log('Published:', response.data);
                   } catch (error) {
                     console.error('Error accepting post:', error);

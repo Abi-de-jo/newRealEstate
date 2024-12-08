@@ -64,7 +64,7 @@ export const AdminAgentDraftId = () => {
     console.log("ertyuiop")
 
      try {
-      await axios.post(`http://localhost:3000/api/residency/generalAchieve/${data.id}`);
+      await axios.post(`https://new-real-estate-server.vercel.app/api/residency/generalAchieve/${data.id}`);
       navigate("/properties")
 
      } catch (error) {

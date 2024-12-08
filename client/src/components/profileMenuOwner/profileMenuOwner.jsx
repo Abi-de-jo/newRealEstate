@@ -22,7 +22,7 @@ const ProfileMenu = ({ user, role, logout }) => {
     const email = localStorage.getItem("email");
   
     try {
-      const res = await axios.post("http://localhost:3000/api/owner/checkOwner", { email });
+      const res = await axios.post("https://new-real-estate-server.vercel.app/api/owner/checkOwner", { email });
   
       if (res.status === 200) { // Check if the status is 200 (Owner exists)
         localStorage.removeItem("role");

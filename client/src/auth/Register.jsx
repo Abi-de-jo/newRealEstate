@@ -21,7 +21,7 @@ const Register = () => {
     console.log(username, email, password);
 
     try{
-        const res = await axios.post("http://localhost:3000/api/agent/register",{
+        const res = await axios.post("https://new-real-estate-server.vercel.app/api/agent/register",{
             username,email,password
         })
 
