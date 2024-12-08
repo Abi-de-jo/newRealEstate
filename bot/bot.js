@@ -59,7 +59,8 @@ const fetchPropertiesByFilters = async (filters) => {
       query.price = { $gte: filters.minPrice, $lte: filters.maxPrice };
     }
     if (filters.district) {
-      query.district = filters.district;
+      // ISSUE: The 'district' field is an array, so we should use $in operator
+      query.district = { $in: [filters.district] };
     }
     if (filters.rooms) {
       query.rooms = filters.rooms;
@@ -80,6 +81,7 @@ const fetchPropertiesByFilters = async (filters) => {
   }
 };
 
+
 // Helper Function: Format Property Data
 const formatProperty = (property) => {
   return (
@@ -91,7 +93,7 @@ const formatProperty = (property) => {
     `🛁 Bathrooms: ${property.bathrooms || "N/A"}\n` +
     `📏 Area: ${property.area || "N/A"} sqft\n` +
     `🚗 Parking: ${property.parking ? "Yes" : "No"}\n` +
-    `[View Details](https://real-estate-frag.vercel.app/properties/${property._id})`
+    `[View Details](https://new-real-estate-client.vercel.app/properties/${property._id})`
   );
 };
 
@@ -112,7 +114,7 @@ const sendFilteredProperties = async (ctx, properties) => {
           ...Markup.inlineKeyboard([
             Markup.button.url(
               "View Details",
-              `https://real-estate-frag.vercel.app/properties/${property._id}`
+              `https://new-real-estate-client.vercel.app/properties/${property._id}`
             ),
           ])
         }
@@ -123,7 +125,7 @@ const sendFilteredProperties = async (ctx, properties) => {
         Markup.inlineKeyboard([
           Markup.button.url(
             "View Details",
-            `https://real-estate-frag.vercel.app/properties/${property._id}`
+            `https://new-real-estate-client.vercel.app/properties/${property._id}`
           ),
         ])
       );
@@ -371,7 +373,7 @@ bot.action("parking_no", async (ctx) => {
 // Handle post ad callback
 bot.action('post_ad', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply("To post your advertisement, please visit our website: https://real-estate-frag.vercel.app/post-ad");
+  await ctx.reply("To post your advertisement, please visit our website: https://new-real-estate-client.vercel.app");
 });
 
 // Handle enable notifications callback
