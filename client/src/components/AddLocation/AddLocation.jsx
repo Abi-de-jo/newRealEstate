@@ -4,7 +4,6 @@ import { validateString } from "../../utils/common";
 import { Button, Group, Select, Checkbox } from "@mantine/core";
 import useCountries from "../../hooks/useCountries";
 import GoogleMapSection from "../Map/GoogleMapSection";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { useTranslation } from "react-i18next";
 
 const AddLocation = ({
@@ -83,9 +82,8 @@ const AddLocation = ({
     "Iveri Settlement (Ivertubani)",
     "Svaneti Quarter (Svanetis Ubani)",
     "Gldani-Nadzaladevi",
-    "Gld"
+    "Gld",
   ];
-  
 
   const metroList = [
     "Liberty Square",
@@ -214,56 +212,28 @@ const AddLocation = ({
             )}
           </div>
 
-          {/* Google Places Autocomplete for Address */}
+          {/* Simple Input for Address */}
           <div className="w-full">
-            {/* <GooglePlacesAutocomplete
-              selectProps={{
-                placeholder: t("address"),
-                onChange: (value) => {
-                  form.setFieldValue("address", value.label);
-                  setPropertyDetails((prev) => ({
-                    ...prev,
-                    address: value.label,
-                  }));
-                },
-                styles: {
-                  control: (provided) => ({
-                    ...provided,
-                    borderColor: "#D1D5DB",
-                    borderRadius: "0.375rem",
-                                        boxShadow: "none",
-                    "&:hover": {
-                      borderColor: "#9CA3AF",
-                    },
-                  }),
-                  input: (provided) => ({
-                    ...provided,
-                    color: "#374151",
-                  }),
-                },
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              {t("address")}
+            </label>
+            <input
+              type="text"
+              placeholder={t("address")}
+              value={form.values.address || ""}
+              onChange={(e) => {
+                const value = e.target.value;
+                form.setFieldValue("address", value);
+                setPropertyDetails((prev) => ({
+                  ...prev,
+                  address: value,
+                }));
               }}
-              className="w-full"
-            /> */}
-
-
-<div className="w-full">
-            <Select
-              label={t("address")}
-              clearable
-              searchable
-              data={getAll()}
-              classNames={{
-                root: "w-full",
-                input:
-                  "w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent",
-                label: "block text-sm font-medium text-gray-700 mb-1",
-              }}
-              {...form.getInputProps("address")}
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500"
             />
-          </div>
-
-
-
+            {form.errors.address && (
+              <p className="text-red-500 text-sm mt-2">{form.errors.address}</p>
+            )}
           </div>
         </div>
 
