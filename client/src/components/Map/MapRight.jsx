@@ -14,7 +14,7 @@ function MapRight({ properties, selectedLocation, onSelectProperty }) {
   const [loading, setLoading] = useState(false);
   const mapRef = useRef();
 
-  const API_KEY = "AIzaSyCzQePlVTWMps35sLtoq4DT7PN5n5_xGbg"; // Replace with your actual API Key
+  const API_KEY = "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"; // Replace with your actual API Key
 
   // Geocode property locations and set markers
   const geocodeLocations = async () => {
@@ -60,7 +60,7 @@ function MapRight({ properties, selectedLocation, onSelectProperty }) {
     await Promise.all(
       selectedNearbyTypes.map(async (type) => {
         try {
-          const response = await axios.get("https://new-real-estate-server.vercel.app/api/nearby-places", {
+          const response = await axios.get("http://localhost:3000/api/nearby-places", {
             params: { lat, lng, type },
           });
           if (response.data.status === "OK") {
