@@ -324,16 +324,26 @@ const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptio
   <div className="flex flex-col w-full md:w-1/2">
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
       <span className="text-2xl md:text-3xl font-bold mb-2 md:mb-0">{data?.title}</span>
-      <div className="flex items-center space-x-2">
-        {data?.discount ? (
-          <>
-            <span className="text-gray-500 line-through text-lg md:text-xl">$ {data?.price}</span>
-            <span className="text-orange-600 text-xl md:text-2xl font-bold">${data?.discount}</span>
-          </>
-        ) : (
-          <span className="text-orange-600 text-xl md:text-2xl font-bold">$ {data?.price}</span>
-        )}
-      </div>
+     <div className="flex items-center space-x-2">
+  {data?.discount ? (
+    <>
+      {/* Original price with strikethrough */}
+      <span className="text-gray-500 line-through text-lg md:text-xl">
+        ${data?.price}
+      </span>
+      {/* Discounted price */}
+      <span className="text-orange-600 text-xl md:text-2xl font-bold">
+        ${data?.discount}
+      </span>
+    </>
+  ) : (
+    /* If no discount, just display the price */
+    <span className="text-orange-600 text-xl md:text-2xl font-bold">
+      ${data?.price}
+    </span>
+  )}
+</div>
+
     </div>
     <div className="font-bold mt-2">({data?.type})</div>
     <Facilities data={data} />
