@@ -2,6 +2,26 @@ import asyncHandler from "express-async-handler";
 import { prisma } from "../config/prismaConfig.js";
 
 
+export const updateDate = asyncHandler(async (req, res) => {
+  const { id } = req.params; // Residency ID
+  const { updatedAt } = req.body; // Timestamp sent from the frontend
+  console.log("Request Body:", req.body);
+
+  try {
+    const residency = await prisma.residency.update({
+      where: { id: id },
+      data: {
+        updatedAt: new Date(updatedAt), // Update the `updatedAt` field with the timestamp
+        createdAt: new Date(updatedAt), // Update the `updatedAt` field with the timestamp
+      },
+    });
+    res.status(200).json({ message: "Updated successfully", residency });
+  } catch (err) {
+    console.error("Error updating date:", err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export const createResidency = asyncHandler(async (req, res) => {
   const {
     title,
