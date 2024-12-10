@@ -1,5 +1,5 @@
 import express from "express";
-import { acceptResidency, createResidency, getAllagentDrafts, getAllPublishedResidency, getAllDraftResidencies, getAllResidency, getResidency, ownerTrack, publishResidency, agentsAchieve, agentsAchievedResidency, Achieve, AchievedResidency, deleteResidency, rentByAgent, updateResidency, getAllResidencyForAdmin, updateResidencyDiscount } from "../controllers/residencyCntrl.js";
+import { acceptResidency, createResidency, getAllagentDrafts, getAllPublishedResidency, getAllDraftResidencies, getAllResidency, getResidency, ownerTrack, updateResidency,publishResidency, agentsAchieve, agentsAchievedResidency, Achieve, AchievedResidency, deleteResidency, rentByAgent, updateResidency, getAllResidencyForAdmin, updateResidencyDiscount } from "../controllers/residencyCntrl.js";
 // import jwtCheck from "../config/auth0Config.js";
 const router = express.Router();
 
