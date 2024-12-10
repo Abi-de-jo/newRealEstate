@@ -22,6 +22,9 @@ export const updateDate = asyncHandler(async (req, res) => {
   }
 });
 
+
+
+
 export const createResidency = asyncHandler(async (req, res) => {
   const {
     title,
