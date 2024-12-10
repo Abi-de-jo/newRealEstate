@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getProperty } from "../../utils/api";
 import PuffLoader from "react-spinners/PuffLoader";
-import { AiOutlineClose, AiOutlinePlus, AiTwotoneCar } from "react-icons/ai";
+import { AiTwotoneCar } from "react-icons/ai";
 import { MdMeetingRoom, MdLocationPin } from "react-icons/md";
 import { FaShower } from "react-icons/fa";
 import GoogleMapSection from "../../components/Map/GoogleMapSection";
@@ -12,8 +12,8 @@ import BookingModal from "../../components/BookingModal/BookingModal";
 import { Modal } from "@mantine/core";
 import axios from "axios";
 
-const API_BASE_URL = "https://new-real-estate-server.vercel.app/api/residency";
-const API_BASE_URLU = "https://new-real-estate-server.vercel.app/api/user";
+const API_BASE_URL = "http://localhost:3000/api/residency";
+const API_BASE_URLU = "http://localhost:3000/api/user";
 
 export const AgentPublishedId = () => {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const handleDiscountFormSubmit = async (e) => {
   }
 };
 
-
+ 
   
 
   const handleEditInputChange = (e) => {
@@ -134,18 +134,6 @@ const handleDiscountFormSubmit = async (e) => {
     }
   };
 
-    const handleActionClickUpdate = async (action) => {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/${action}/${id}`, {
-        updatedAt: new Date().toISOString(), // Send the current timestamp in ISO format
-      });
-      console.log("Updated:", response.data);
-      alert("Property updated successfully!");
-    } catch (error) {
-      console.error(`Error updating property:`, error);
-      alert("Failed to update property.");
-    }
-  };
  
 
   const handleFormSubmit = async (e) => {
@@ -215,7 +203,20 @@ const handleDiscountFormSubmit = async (e) => {
       console.error(`Error ${action.toLowerCase()} post:`, error);
     }
   };
-
+  const handleActionClickUpdate = async (action) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/${action}/${id}`, {
+        updatedAt: new Date().toISOString(), // Send the current timestamp in ISO format
+      });
+      console.log("Updated:", response.data);
+      alert("Property updated successfully!");
+    } catch (error) {
+      console.error(`Error updating property:`, error);
+      alert("Failed to update property.");
+    }
+  };
+  
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -247,9 +248,7 @@ const handleDiscountFormSubmit = async (e) => {
             rentByOwner={rentByOwner}
             setEditModalOpen={setEditModalOpen}
             setDiscountModalOpen={setDiscountModalOpen}
-                        handleActionClickUpdate={handleActionClickUpdate}          />
-
-          />
+            handleActionClickUpdate={handleActionClickUpdate}          />
           <div className="w-full md:w-1/2 mt-6 md:mt-0">
             <GoogleMapSection address={data?.address} district={data?.district} country={data?.country} />
           </div>
@@ -320,30 +319,20 @@ const PropertyImages = ({ images, id }) => (
   </div>
 );
 
-const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptions, setShowRentOptions, handleActionClick, handleActionClickUpdate,rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
+const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, handleActionClickUpdate, showRentOptions, setShowRentOptions, handleActionClick, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
   <div className="flex flex-col w-full md:w-1/2">
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
       <span className="text-2xl md:text-3xl font-bold mb-2 md:mb-0">{data?.title}</span>
-     <div className="flex items-center space-x-2">
-  {data?.discount ? (
-    <>
-      {/* Original price with strikethrough */}
-      <span className="text-gray-500 line-through text-lg md:text-xl">
-        ${data?.price}
-      </span>
-      {/* Discounted price */}
-      <span className="text-orange-600 text-xl md:text-2xl font-bold">
-        ${data?.discount}
-      </span>
-    </>
-  ) : (
-    /* If no discount, just display the price */
-    <span className="text-orange-600 text-xl md:text-2xl font-bold">
-      ${data?.price}
-    </span>
-  )}
-</div>
-
+      <div className="flex items-center space-x-2">
+        {data?.discount ? (
+          <>
+            <span className="text-gray-500 line-through text-lg md:text-xl">$ {data?.price}</span>
+            <span className="text-orange-600 text-xl md:text-2xl font-bold">${data?.discount}</span>
+          </>
+        ) : (
+          <span className="text-orange-600 text-xl md:text-2xl font-bold">$ {data?.price}</span>
+        )}
+      </div>
     </div>
     <div className="font-bold mt-2">({data?.type})</div>
     <Facilities data={data} />
@@ -364,14 +353,13 @@ const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptio
     </div>
     <ActionButtons
       handleActionClick={handleActionClick}
+      handleActionClickUpdate={handleActionClickUpdate}
       showRentOptions={showRentOptions}
       setShowRentOptions={setShowRentOptions}
       setRentAgentModalOpen={setRentAgentModalOpen}
       rentByOwner={rentByOwner}
       setEditModalOpen={setEditModalOpen}
       setDiscountModalOpen={setDiscountModalOpen}
-            handleActionClickUpdate={handleActionClickUpdate}
-
     />
   </div>
 );
@@ -391,17 +379,18 @@ const Facilities = ({ data }) => (
   </div>
 );
 
-const ActionButtons = ({ handleActionClick, showRentOptions, setShowRentOptions, handleActionClickUpdate,setRentAgentModalOpen, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
+const ActionButtons = ({ handleActionClick, handleActionClickUpdate, showRentOptions, setShowRentOptions, setRentAgentModalOpen, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
   <div className="flex flex-wrap gap-2 md:gap-4 mt-4">
     <button className="px-3 py-1 md:px-4 md:py-2 rounded bg-red-500 text-white text-sm md:text-base hover:bg-red-600 transition-all duration-300" onClick={() => handleActionClick('delete')}>
       Delete
     </button>
-     <button
+    <button
   className="px-3 py-1 md:px-4 md:py-2 rounded bg-yellow-500 text-white text-sm md:text-base hover:bg-yellow-600 transition-all duration-300"
   onClick={() => handleActionClickUpdate("update")}
 >
   Update
 </button>
+
     {!showRentOptions ? (
       <button className="px-3 py-1 md:px-4 md:py-2 rounded bg-green-500 text-white text-sm md:text-base hover:bg-green-600 transition-all duration-300" onClick={() => setShowRentOptions(true)}>
         Rent
@@ -422,6 +411,7 @@ const ActionButtons = ({ handleActionClick, showRentOptions, setShowRentOptions,
     <button className="px-3 py-1 md:px-4 md:py-2 rounded bg-blue-500 text-white text-sm md:text-base hover:bg-blue-600 transition-all duration-300" onClick={() => setDiscountModalOpen(true)}>
       Dicount
     </button>
+    
   </div>
 );
 
