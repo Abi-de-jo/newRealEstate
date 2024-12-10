@@ -134,6 +134,18 @@ const handleDiscountFormSubmit = async (e) => {
     }
   };
 
+    const handleActionClickUpdate = async (action) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/${action}/${id}`, {
+        updatedAt: new Date().toISOString(), // Send the current timestamp in ISO format
+      });
+      console.log("Updated:", response.data);
+      alert("Property updated successfully!");
+    } catch (error) {
+      console.error(`Error updating property:`, error);
+      alert("Failed to update property.");
+    }
+  };
  
 
   const handleFormSubmit = async (e) => {
@@ -235,6 +247,8 @@ const handleDiscountFormSubmit = async (e) => {
             rentByOwner={rentByOwner}
             setEditModalOpen={setEditModalOpen}
             setDiscountModalOpen={setDiscountModalOpen}
+                        handleActionClickUpdate={handleActionClickUpdate}          />
+
           />
           <div className="w-full md:w-1/2 mt-6 md:mt-0">
             <GoogleMapSection address={data?.address} district={data?.district} country={data?.country} />
@@ -306,7 +320,7 @@ const PropertyImages = ({ images, id }) => (
   </div>
 );
 
-const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptions, setShowRentOptions, handleActionClick, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
+const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptions, setShowRentOptions, handleActionClick, handleActionClickUpdate,rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
   <div className="flex flex-col w-full md:w-1/2">
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
       <span className="text-2xl md:text-3xl font-bold mb-2 md:mb-0">{data?.title}</span>
@@ -346,6 +360,8 @@ const PropertyDetails = ({ data, setOpened, setRentAgentModalOpen, showRentOptio
       rentByOwner={rentByOwner}
       setEditModalOpen={setEditModalOpen}
       setDiscountModalOpen={setDiscountModalOpen}
+            handleActionClickUpdate={handleActionClickUpdate}
+
     />
   </div>
 );
@@ -365,11 +381,17 @@ const Facilities = ({ data }) => (
   </div>
 );
 
-const ActionButtons = ({ handleActionClick, showRentOptions, setShowRentOptions, setRentAgentModalOpen, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
+const ActionButtons = ({ handleActionClick, showRentOptions, setShowRentOptions, handleActionClickUpdate,setRentAgentModalOpen, rentByOwner, setEditModalOpen, setDiscountModalOpen }) => (
   <div className="flex flex-wrap gap-2 md:gap-4 mt-4">
     <button className="px-3 py-1 md:px-4 md:py-2 rounded bg-red-500 text-white text-sm md:text-base hover:bg-red-600 transition-all duration-300" onClick={() => handleActionClick('delete')}>
       Delete
     </button>
+     <button
+  className="px-3 py-1 md:px-4 md:py-2 rounded bg-yellow-500 text-white text-sm md:text-base hover:bg-yellow-600 transition-all duration-300"
+  onClick={() => handleActionClickUpdate("update")}
+>
+  Update
+</button>
     {!showRentOptions ? (
       <button className="px-3 py-1 md:px-4 md:py-2 rounded bg-green-500 text-white text-sm md:text-base hover:bg-green-600 transition-all duration-300" onClick={() => setShowRentOptions(true)}>
         Rent
