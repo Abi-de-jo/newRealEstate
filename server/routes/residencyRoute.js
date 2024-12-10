@@ -25,6 +25,7 @@ router.put("/publish/:id", publishResidency);
 
 router.delete("/delete/:id", deleteResidency);
 router.post("/rentByAgent", rentByAgent);
+router.post("/update/:id", updateDate);
 
 
 
