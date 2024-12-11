@@ -11,7 +11,7 @@ import "@mantine/core/styles.css";
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
  
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_K0qUomsdUS8c5inbr7B9IZv9E8pqCWzbJCw0QKTYmX9X-LYGsrpdMohJda79V8Xh/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5IOUdJUc83maDvPjPN3g0H0Iml0rG_YaIy3WqlZx9KfgfG2Ox-HZlY-2tHPNwO5Rv/exec ";
 const role = localStorage.getItem("role");
 const agentEmail =  localStorage.getItem("email")
  const Facilities = ({
